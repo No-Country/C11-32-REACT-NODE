@@ -7,5 +7,5 @@ const app = express()
 app.use(cors())
 
 app.listen(PORT, () => {
-  console.log('Servidor en http://localhost:3000')
+  console.log('Servidor en http://localhost:' + PORT)
 })
