@@ -1,0 +1,10 @@
+import { resolve } from 'path'
+
+const configSequelice = {
+  config: resolve('./db', 'config.js'),
+  'models-path': resolve('./db/models'),
+  'migrations-path': resolve('./db/migrations'),
+  'seeders-path': resolve('./db/seeders')
+}
+
+export default configSequelice
