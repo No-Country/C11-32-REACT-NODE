@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./build/app.js",
-    "dev": "ts-node -r tsconfig-paths/register ./src/app.ts",
+    "dev": "nodemon",
     "lint": "eslint . --ext .ts",
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migrations:run": "sequelize-cli db:migrate",
