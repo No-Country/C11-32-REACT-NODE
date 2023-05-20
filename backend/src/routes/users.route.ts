@@ -1,13 +1,13 @@
-import { NextFunction, Request, Response, Router } from 'express'
+import { NextFunction, Request, Response, Router } from "express";
 
-const routeUser = Router()
+const routeUser = Router();
 
-routeUser.get('/', (req: Request, res: Response, next: NextFunction) => {
+routeUser.get("/", (req: Request, res: Response, next: NextFunction) => {
   try {
-    res.send('category route')
+    res.send("category route");
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-export default routeUser
+export default routeUser;

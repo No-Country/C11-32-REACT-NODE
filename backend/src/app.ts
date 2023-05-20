@@ -3,23 +3,15 @@ import express from "express";
 import cors from "cors";
 import { CONFIG } from "./config/config";
 import routerApi from "./routes";
-import sequelize, { syncDB } from "./libs/sequelize";
+import DBInit from "./db";
 const { PORT } = CONFIG;
 
-sequelize
-  .authenticate({ logging: false })
+DBInit()
   .then(() => {
-    console.info("Database is connected");
-    syncDB()
-      .then(() => {
-        console.info("Database is synced");
-      })
-      .catch((err) => {
-        console.error("Unable to sync the database:", err);
-      });
+    console.log("Database conected");
   })
-  .catch((err) => {
-    console.error("Unable to connect to the database:", err);
+  .catch(() => {
+    console.log("Database not conected");
   });
 
 const app = express();
