@@ -11,7 +11,7 @@ const sequelize = new Sequelize(CONFIG.DATABASE_URL, {
 
 async function DBInit() {
   await sequelize.authenticate();
-  await sequelize.sync({ alter: true });
+  await sequelize.sync({ force: true });
 }
 
 export default DBInit;

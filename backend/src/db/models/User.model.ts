@@ -1,13 +1,20 @@
 /* eslint-disable indent */
-import { Table, Column, Model } from "sequelize-typescript";
+import { Table, Column, Model, DataType } from "sequelize-typescript";
 
 @Table
 class Users extends Model {
-  @Column
-  name: string;
+  @Column({
+    primaryKey: true,
+    defaultValue: DataType.UUIDV4,
+    type: DataType.TEXT,
+  })
+  id!: string;
 
   @Column
-  birthday: Date;
+  name!: string;
+
+  @Column
+  birthday!: string;
 }
 
 export default Users;
