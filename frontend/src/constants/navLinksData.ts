@@ -14,6 +14,10 @@ const navLinks = [
  {
   title: "Login",
   path: "/Login"
+ },
+ {
+  title: "Blog",
+  path: "/Blog"
  }
 
   // Agrega más objetos para cada enlace del navbar
