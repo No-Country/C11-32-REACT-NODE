@@ -1,10 +1,9 @@
-
+import "./About.css"
 const About = () => {
   return (
-    <div>
-      Este es el About
-    </div>
-  )
+  <h1>sads</h1>
+  );
+    
 }
 
-export default About
+export default About;
