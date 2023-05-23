@@ -1,7 +1,7 @@
 export const data =[
     {
         id:1,
-       thumbnail:"https://imgbb.su/images/2023/04/09/Presentacion-Narrada-Alquiler-Coches-Profesional-Azul-Purpura-1a48f23e86c3e3c12.png",
+       thumbnail:"https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png",
        title:"Inglés en la oficina: frases para sonar más profesional",
        subtitle:"A Beginner's Guide to Navigating the Supermarket Aisles",
        enlaceblog:"/PhrasesAtWork",

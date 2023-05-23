@@ -9,7 +9,7 @@ const ContainerBlog = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -34,22 +34,22 @@ const ContainerBlog = () => {
       <div className="slider-container" style={{ marginBottom: '20px' }}>
         <Slider {...settings}>
           <div>
-            <img src="https://i.ibb.co/LSf3qcx/pexels-photo-4458554.jpg" alt="Imagen 1" />
+            <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
           </div>
           <div>
-            <img src="https://i.ibb.co/LSf3qcx/pexels-photo-4458554.jpg" alt="Imagen 2" />
+          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
           </div>
           <div>
-            <img src="https://i.ibb.co/LSf3qcx/pexels-photo-4458554.jpg" alt="Imagen 3" />
+          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
           </div>
           <div>
-            <img src="https://i.ibb.co/LSf3qcx/pexels-photo-4458554.jpg" alt="Imagen 3" />
+          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
           </div>
           <div>
-            <img src="https://i.ibb.co/LSf3qcx/pexels-photo-4458554.jpg" alt="Imagen 3" />
+          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
           </div>
           <div>
-            <img src="https://i.ibb.co/LSf3qcx/pexels-photo-4458554.jpg" alt="Imagen 3" />
+          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
           </div>
           {/* Agrega más elementos <div> con las imágenes deseadas */}
         </Slider>
