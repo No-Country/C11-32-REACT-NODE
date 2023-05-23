@@ -1,7 +1,4 @@
-.hero-container {
-  width: 100vw;
-  overflow: hidden; /* Reemplaza 'overflow-x: hidden' por 'overflow: hidden' */
-}
+
 
 .btn-main,
 .btn-main-s {

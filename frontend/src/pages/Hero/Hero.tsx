@@ -2,7 +2,6 @@ import React from 'react';
 import "./Hero.css"
 const Hero: React.FC = () => {
   return (
-    <div className="hero-container">
       <div className="hero-main flex items-center justify-center bg-gray-900 text-white">
         <div className="container">
           <div className="row">
@@ -17,7 +16,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+  
   
 
   );
