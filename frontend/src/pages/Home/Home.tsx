@@ -1,12 +1,12 @@
 import React from 'react';
 import Hero from '../Hero/Hero';
-
+import "./Home.css"
 const Home: React.FC = () => {
   return (
-
-    <>
-    <Hero/>
-    </>
+    <div className="home-container">
+    <Hero />
+    {/* ...otros elementos... */}
+  </div>
   );
 }
 

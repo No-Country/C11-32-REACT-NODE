@@ -3,6 +3,7 @@ import Home from './pages/Home/Home';
 import RoadMap from './pages/RoadMap/RoadMap';
 import NavBar from './components/NavBar/NavBar';
 import navLinks from "./constants/navLinksData";
+import About from './pages/About/About';
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/About" element={<About />} />
+
         <Route path="*" element={<>Not Found</>} />
         <Route path="/RoadMap" element={<RoadMap />} />
       </Routes>
