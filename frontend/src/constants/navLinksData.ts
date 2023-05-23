@@ -8,6 +8,10 @@ const navLinks = [
     path: "/About"
   },
   {
+    title: "Salas",
+    path: "/Salas"
+  },
+  {
     title: "RoadMap",
     path: "/RoadMap"
   },

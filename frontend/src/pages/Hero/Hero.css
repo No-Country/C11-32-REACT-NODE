@@ -41,8 +41,8 @@
 .hero-main {
   background-image: url(https://images.pexels.com/photos/4226262/pexels-photo-4226262.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+  background-size: cover; 
+  background-attachment: fixed; 
   position: relative;
   z-index: 2;
   height: 100vh; /* Ajustar altura al 100% de la ventana */
