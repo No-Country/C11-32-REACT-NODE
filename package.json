@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@videosdk.live/react-sdk": "^0.1.73",
-    "react-player": "^2.12.0"
-  }
-}
