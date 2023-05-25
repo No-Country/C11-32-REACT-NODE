@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import Milogo from "../../assets/logo.svg"
+import { logo } from "@/assets";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 interface NavLinkItem {
   title: string;
@@ -13,25 +13,26 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  console.log("render");
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav className="bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-            <img src={Milogo} alt="logo" style={{ width: "30px" }} />            </div>
+              <img src={logo} alt="logo" style={{ width: "30px" }} />
+            </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 {navLinks.map((link) => (
                   <NavLink
                     key={link.path}
                     to={link.path}
-                    className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white"
                   >
                     {link.title}
                   </NavLink>
@@ -48,14 +49,14 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
             <button
               type="button"
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white focus:outline-none"
               aria-controls="mobile-menu"
-              aria-expanded={isMenuOpen ? 'true' : 'false'}
+              aria-expanded={isMenuOpen ? "true" : "false"}
             >
               <span className="sr-only">Open menu</span>
               {/* Icono de menú hamburguesa */}
               <svg
-                className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
+                className={`${isMenuOpen ? "hidden" : "block"} h-6 w-6`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -71,7 +72,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
               </svg>
               {/* Icono de menú cerrado (X) */}
               <svg
-                className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
+                className={`${isMenuOpen ? "block" : "hidden"} h-6 w-6`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -90,13 +91,13 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
         </div>
       </div>
       {/* Menú desplegable para dispositivos móviles */}
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-      <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
+        <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
               to={link.path}
-              className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:text-white"
               onClick={toggleMenu} // Cierra el menú al hacer clic en un enlace
             >
               {link.title}
@@ -109,4 +110,3 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
 };
 
 export default NavBar;
-
