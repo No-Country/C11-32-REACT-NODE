@@ -9,7 +9,7 @@ export const ROUTES = {
     logout: "/auth/logout",
   },
   suscriptions: {
-    plans: "/pricing",
+    pricingPlans: "/pricing",
     payment: "/suscriptions/payment",
     success: "/sucriptions/success",
     cancel: "/sucriptions/cancel",

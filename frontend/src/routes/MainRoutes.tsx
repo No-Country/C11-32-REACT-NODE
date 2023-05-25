@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { ROUTES } from ".";
 import { RoutesWithNotFound } from "@/components";
 const About = lazy(() => import("@/pages/About/About"));
@@ -8,6 +8,7 @@ const RoadMap = lazy(() => import("@/pages/RoadMap/RoadMap"));
 const ContainerBlog = lazy(() => import("@/pages/Blog/ContainerBlog"));
 const VideoCalling = lazy(() => import("@/pages/VideoCalling/VideoCalling"));
 const Login = lazy(() => import("@/pages/Login/Login"));
+const PricingPlans = lazy(() => import("@/pages/Suscriptions/PricingPlans"));
 
 const MainRoutes = () => {
   return (
@@ -18,6 +19,10 @@ const MainRoutes = () => {
       <Route path={ROUTES.blog} element={<ContainerBlog />} />
       <Route path={ROUTES.rooms} element={<VideoCalling />} />
       <Route path={ROUTES.auth.login} element={<Login />} />
+      <Route
+        path={ROUTES.suscriptions.pricingPlans}
+        element={<PricingPlans />}
+      />
     </RoutesWithNotFound>
   );
 };
