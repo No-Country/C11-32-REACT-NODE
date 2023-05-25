@@ -1,28 +1,38 @@
+import { ROUTES } from "@/routes";
+
 const navLinks = [
   {
     title: "Home",
-    path: "/"
+    path: "/",
   },
   {
     title: "About",
-    path: "/About"
+    path: ROUTES.about,
   },
   {
-    title: "Salas",
-    path: "/Salas"
+    title: "Rooms",
+    path: ROUTES.rooms,
   },
   {
     title: "RoadMap",
-    path: "/RoadMap"
+    path: ROUTES.roadMap,
   },
- {
-  title: "Login",
-  path: "/Login"
- },
- {
-  title: "Blog",
-  path: "/Blog"
- }
+  {
+    title: "Pricing",
+    path: ROUTES.suscriptions.pricingPlans,
+  },
+  {
+    title: "Blog",
+    path: ROUTES.blog,
+  },
+  {
+    title: "Login",
+    path: ROUTES.auth.login,
+  },
+  {
+    title: "Register",
+    path: ROUTES.auth.register,
+  },
 
   // Agrega más objetos para cada enlace del navbar
 ];

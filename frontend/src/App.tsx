@@ -1,8 +1,8 @@
 import NavBar from "./components/NavBar/NavBar";
-import navLinks from "./constants/navLinksData";
 
 import { Suspense } from "react";
 import { MainRoutes } from "./routes";
+import navLinks from "./constants/navLinksData";
 
 function App() {
   return (
