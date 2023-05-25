@@ -13,7 +13,6 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log("render");
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
