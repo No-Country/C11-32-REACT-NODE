@@ -1,5 +1,13 @@
+import { pricingPlansList } from "@/services";
+import { useQuery } from "@tanstack/react-query";
+
 const PricingPlans = () => {
-  return <h1>plans</h1>;
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["pricingList"],
+    queryFn: pricingPlansList,
+  });
+
+  return <main>{}</main>;
 };
 
 export default PricingPlans;
