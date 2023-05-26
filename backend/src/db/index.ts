@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import { CONFIG } from "~/config/config";
 
-const sequelize = new Sequelize(CONFIG.DATABASE_URL, {
+export const sequelize = new Sequelize(CONFIG.DATABASE_URL, {
   dialect: "postgres",
   models: [__dirname + "/models/*.model.ts"],
   modelMatch: (filename: string, member: string) => {
@@ -9,9 +9,15 @@ const sequelize = new Sequelize(CONFIG.DATABASE_URL, {
   },
 });
 
-async function DBInit() {
-  await sequelize.authenticate();
-  await sequelize.sync({ force: true });
+export default async function DBInit() {
+  try {
+
+    await sequelize.authenticate();
+    await sequelize.sync({ force: true });
+    
+  } catch(error) {
+    console.log(error);
+  }
 }
 
-export default DBInit;
+// export default DBInit;
