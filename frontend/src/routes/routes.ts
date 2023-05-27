@@ -10,7 +10,7 @@ export const ROUTES = {
   },
   suscriptions: {
     pricingPlans: "/pricing",
-    payment: "/suscriptions/payment",
+    checkout: "/suscriptions/checkout",
     success: "/sucriptions/success",
     cancel: "/sucriptions/cancel",
   },

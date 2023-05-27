@@ -9,6 +9,7 @@ const ContainerBlog = lazy(() => import("@/pages/Blog/ContainerBlog"));
 const VideoCalling = lazy(() => import("@/pages/VideoCalling/VideoCalling"));
 const Login = lazy(() => import("@/pages/Login/Login"));
 const PricingPlans = lazy(() => import("@/pages/Suscriptions/PricingPlans"));
+const Checkout = lazy(() => import("@/pages/Suscriptions/Checkout"));
 
 const MainRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const MainRoutes = () => {
         path={ROUTES.suscriptions.pricingPlans}
         element={<PricingPlans />}
       />
+      <Route path={ROUTES.suscriptions.checkout} element={<Checkout />} />
     </RoutesWithNotFound>
   );
 };
