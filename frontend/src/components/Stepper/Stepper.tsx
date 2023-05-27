@@ -28,6 +28,7 @@ const Stepper: FC<Props> = ({ steps, activeStep }) => {
 
           return (
             <li
+              key={"stepper " + index}
               className={`flex w-full items-center after:inline-block after:h-1 after:w-full after:border-4 after:border-b  ${
                 activeStep >= index
                   ? "text-blue-600 after:border-blue-100"
