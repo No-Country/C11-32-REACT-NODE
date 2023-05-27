@@ -5,20 +5,22 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   isError?: boolean;
   helperText?: string;
   classNameInput?: string;
+  classNameContainer?: string;
 }
 
 const Input: FC<Props> = ({
   label,
   isError,
   classNameInput,
+  classNameContainer,
   helperText = " ",
   ...rest
 }) => {
   const id = useId();
   return (
-    <div className="mb-4">
+    <div className={"mb-4 w-full " + classNameContainer}>
       <label
-        className="mb-2 block text-sm font-bold text-gray-700"
+        className={"mb-2 block text-sm font-bold text-gray-700 "}
         htmlFor={id}
       >
         {label}
