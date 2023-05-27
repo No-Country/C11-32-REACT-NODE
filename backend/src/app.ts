@@ -14,11 +14,16 @@ DBInit()
     console.log("Database not conected");
   });
 
+  
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+
+
 routerApi(app);
+
+
 
 app.listen(PORT, () => {
   console.log("Servidor en http://localhost:" + PORT);
