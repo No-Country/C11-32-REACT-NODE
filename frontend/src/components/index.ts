@@ -1,4 +1,5 @@
 export { default as Card } from "./Card";
+export * from "./DebitCard";
 export * from "./Forms";
 export * from "./NavBar";
 export * from "./PaymentMethod";
