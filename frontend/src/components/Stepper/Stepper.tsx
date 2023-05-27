@@ -12,7 +12,7 @@ interface Props {
 
 const Stepper: FC<Props> = ({ steps, activeStep }) => {
   return (
-    <ol className="flex w-full items-center">
+    <ol className="flex w-full items-center pl-0">
       <li
         className={`flex w-full items-center  after:inline-block after:h-1 after:w-full after:border-4 after:border-b ${
           activeStep >= 0
@@ -40,7 +40,7 @@ const Stepper: FC<Props> = ({ steps, activeStep }) => {
         })}
 
       <li
-        className={`flex w-full items-center ${
+        className={`flex  items-center ${
           activeStep >= steps.length - 1
             ? "text-blue-600 after:border-blue-100"
             : "text-gray-500 after:border-gray-100"
