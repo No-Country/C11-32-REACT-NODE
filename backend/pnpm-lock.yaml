@@ -28,45 +28,12 @@ dependencies:
   sequelize-typescript:
     specifier: ^2.1.5
     version: 2.1.5(@types/node@20.1.5)(@types/validator@13.7.17)(reflect-metadata@0.1.13)(sequelize@6.31.1)
+  stripe:
+    specifier: ^12.6.0
+    version: 12.6.0
   tsc-alias:
     specifier: ^1.8.6
     version: 1.8.6
-lockfileVersion: 5.4
-
-specifiers:
-  '@types/cors': ^2.8.13
-  '@types/express': ^4.17.17
-  '@types/node': '*'
-  '@types/validator': ^13.7.17
-  '@typescript-eslint/eslint-plugin': ^5.59.6
-  '@typescript-eslint/parser': ^5.59.6
-  cors: ^2.8.5
-  dotenv: ^16.0.3
-  eslint: ^8.40.0
-  express: ^4.18.2
-  nodemon: ^2.0.22
-  pg: ^8.11.0
-  pg-hstore: ^2.3.4
-  reflect-metadata: ^0.1.13
-  sequelize: ^6.31.1
-  sequelize-typescript: ^2.1.5
-  stripe: ^12.6.0
-  ts-node: ^10.9.1
-  tsc-alias: ^1.8.6
-  tsconfig-paths: ^4.2.0
-  typescript: ^5.0.4
-
-dependencies:
-  cors: 2.8.5
-  dotenv: 16.0.3
-  express: 4.18.2
-  pg: 8.11.0
-  pg-hstore: 2.3.4
-  reflect-metadata: 0.1.13
-  sequelize: 6.31.1_pg-hstore@2.3.4+pg@8.11.0
-  sequelize-typescript: 2.1.5_mohzlxqda4enumdxbkxivkvmnq
-  stripe: 12.6.0
-  tsc-alias: 1.8.6
 
 devDependencies:
   '@types/bcrypt':
@@ -2044,8 +2011,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /supports-color@5.5.0:
-  /stripe/12.6.0:
+  /stripe@12.6.0:
     resolution: {integrity: sha512-aJat4pGA6fr5DvuojRVXMaOCAw8ceS3UQM4ux1BMUViG686NmOAf1psEh6Wu+NFUifoy6kV7+4APq66OlTWtTw==}
     engines: {node: '>=12.*'}
     dependencies:
@@ -2053,7 +2019,7 @@ packages:
       qs: 6.11.0
     dev: false
 
-  /supports-color/5.5.0:
+  /supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
     dependencies:
