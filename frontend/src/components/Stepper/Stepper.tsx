@@ -1,25 +1,16 @@
-import { Button, Card, StepperItem } from "@/components";
+import { StepperItem } from "@/components";
 import { FC } from "react";
 
 interface Step {
   Icon: FC;
-  Contend: FC;
 }
 
 interface Props {
   steps: Step[];
   activeStep: number;
-  onClickPrev: () => void;
-  onClickNext: () => void;
 }
 
-const Stepper: FC<Props> = ({
-  steps,
-  activeStep,
-  onClickPrev,
-  onClickNext,
-}) => {
-  const { Contend } = steps[activeStep];
+const Stepper: FC<Props> = ({ steps, activeStep }) => {
   return (
     <div>
       <ol className="flex w-full items-center pl-0">
@@ -58,25 +49,6 @@ const Stepper: FC<Props> = ({
           <StepperItem Icon={steps[steps.length - 1].Icon} />
         </li>
       </ol>
-      <Card>
-        <Contend />
-        <div className="mt-4 flex justify-between gap-2">
-          <Button
-            className="w-max"
-            onClick={onClickPrev}
-            disabled={activeStep === 0}
-          >
-            Prev
-          </Button>
-          <Button
-            className="w-max"
-            onClick={onClickNext}
-            disabled={activeStep === steps.length - 1}
-          >
-            Next
-          </Button>
-        </div>
-      </Card>
     </div>
   );
 };
