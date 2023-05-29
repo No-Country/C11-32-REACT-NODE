@@ -1,68 +1,69 @@
-import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import { useMemo } from "react";
+import { useStripe, CardElement } from "@stripe/react-stripe-js";
+import {
+  CreatePaymentMethodData,
+  StripeCardElementOptions,
+  StripeElements,
+} from "@stripe/stripe-js";
+import { FC, useId } from "react";
+import { Button } from "..";
 
-const useOptions = () => {
-  const options = useMemo(
-    () => ({
-      style: {
-        base: {
-          fontSize: "1rem",
-          color: "#424770",
-          letterSpacing: "0.025em",
-          "::placeholder": {
-            color: "#aab7c4",
-          },
-        },
-        invalid: {
-          color: "#9e2146",
-        },
-      },
-    }),
-    []
-  );
-
-  return options;
+const options: StripeCardElementOptions = {
+  classes: {
+    base: "w-full rounded-md border border-gray-300 px-3 py-2  text-base focus:border-indigo-500 focus:outline-none h-10 pt-3",
+    invalid: "text-red-600",
+    focus: "focus:border-indigo-500 focus:outline-none",
+  },
+  hidePostalCode: true,
+  iconStyle: "solid",
 };
 
-const CardForm = () => {
+interface CardFormProps {
+  element: StripeElements | null;
+}
+
+const CardForm: FC<CardFormProps> = ({ element }) => {
+  const idCard = useId();
   const stripe = useStripe();
-  const elements = useElements();
-  const options = useOptions();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
+    const card = element?.getElement(CardElement);
+    if (!stripe || !card) {
       return;
     }
 
-    const payload = await stripe.createPaymentMethod({
+    const optionsPaymentMethod: CreatePaymentMethodData = {
       type: "card",
-      card: elements.getElement(CardElement),
-    });
+      card,
+    };
+
+    const payload = await stripe.createPaymentMethod(optionsPaymentMethod);
 
     console.log("[PaymentMethod]", payload);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
+      <label
+        htmlFor={idCard}
+        className={"mb-2 block text-sm font-bold text-gray-700 "}
+      >
         Card details
-        <CardElement
-          options={options}
-          onReady={() => {
-            console.log("CardElement [ready]");
-          }}
-          onChange={(event) => {
-            console.log("CardElement [change]", event);
-          }}
-        />
       </label>
-      <button type="submit" disabled={!stripe}>
+      <CardElement
+        id={idCard}
+        options={options}
+        onReady={() => {
+          console.log("CardElement [ready]");
+        }}
+        onChange={(event) => {
+          console.log("CardElement [change]", event);
+        }}
+      />
+      <Button type="submit" disabled={!stripe} className="mt-4">
         Pay
-      </button>
+      </Button>
     </form>
   );
 };

@@ -17,3 +17,12 @@ export const pricingPlansList = async () => {
   if (response?.status !== 200) throw response.data;
   return response.data;
 };
+
+export const getPricingPlanById = async (id: string) => {
+  const response = await Axios.get<Partial<PricingPlan>>(
+    `${URL_PRICING_PLANS.default}/${id}`
+  );
+
+  if (response?.status !== 200) throw response.data;
+  return response.data;
+};
