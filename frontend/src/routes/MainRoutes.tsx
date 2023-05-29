@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Route } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import { ROUTES } from ".";
 import { RoutesWithNotFound } from "@/components";
 const About = lazy(() => import("@/pages/About/About"));
@@ -24,7 +24,14 @@ const MainRoutes = () => {
         path={ROUTES.suscriptions.pricingPlans}
         element={<PricingPlans />}
       />
-      <Route path={ROUTES.suscriptions.checkout} element={<Checkout />} />
+      <Route
+        path={`${ROUTES.suscriptions.checkout}/:id`}
+        element={<Checkout />}
+      />
+      <Route
+        path={`${ROUTES.suscriptions.checkout}`}
+        element={<Navigate to={ROUTES.suscriptions.pricingPlans} />}
+      />
     </RoutesWithNotFound>
   );
 };

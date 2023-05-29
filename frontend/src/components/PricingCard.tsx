@@ -8,7 +8,7 @@ interface PricingCardProps {
 }
 
 const PricingCard: FC<PricingCardProps> = ({ item }) => {
-  const { product, currency, amount, interval } = item;
+  const { product, currency, amount, interval, id } = item;
   return (
     <div className="rounded-lg bg-white p-4 shadow-md">
       <h2 className="text-xl font-semibold">{product?.name}</h2>
@@ -19,7 +19,7 @@ const PricingCard: FC<PricingCardProps> = ({ item }) => {
         </p>
         <p className="text-gray-600">{interval}</p>
       </div>
-      <Link to={ROUTES.suscriptions.checkout}>
+      <Link to={`${ROUTES.suscriptions.checkout}/${id}`}>
         <button>Comprar</button>
       </Link>
     </div>
