@@ -10,3 +10,18 @@ export function getPlans(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 }
+export function getPlansById(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { id } = req.params;
+    stripe.plans.list({ expand: ["data.product"] }).then((plans) => {
+      const planFounded = plans.data.find((plan) => id === plan.id);
+
+      if (!planFounded) {
+        return res.status(404).json("pricing plan not found");
+      }
+      return res.json(planFounded);
+    });
+  } catch (error) {
+    next(error);
+  }
+}
