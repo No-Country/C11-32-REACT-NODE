@@ -4,12 +4,12 @@ dependencies:
   '@reduxjs/toolkit':
     specifier: ^1.9.5
     version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
-  '@videosdk.live/react-sdk':
-    specifier: ^0.1.73
-    version: 0.1.73(react@18.2.0)
   '@types/react-slick':
     specifier: ^0.23.10
     version: 0.23.10
+  '@videosdk.live/react-sdk':
+    specifier: ^0.1.73
+    version: 0.1.73(react@18.2.0)
   axios:
     specifier: ^1.4.0
     version: 1.4.0
@@ -2018,7 +2018,6 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-<<<<<<< HEAD
   /redux-thunk@2.4.2(redux@4.2.1):
     resolution: {integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==}
     peerDependencies:
@@ -2039,10 +2038,10 @@ packages:
 
   /reselect@4.1.8:
     resolution: {integrity: sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==}
-=======
+    dev: false
+
   /resize-observer-polyfill@1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
->>>>>>> ac45029963aa8f5258d8a2517bc5e574a9ae916d
     dev: false
 
   /resolve-from@4.0.0:
