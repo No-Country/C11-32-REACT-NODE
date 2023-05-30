@@ -50,7 +50,7 @@ const PricingCard: FC<PricingCardProps> = ({ item }) => {
             className="text-body-color leading-loos mb-1 flex gap-2 text-base"
             key={index}
           >
-            <span className="w-8 text-green-500">
+            <span className=" text-green-500">
               <CheckIc />
             </span>
             {feature}
