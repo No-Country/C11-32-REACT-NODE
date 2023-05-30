@@ -1,21 +1,14 @@
 import { PricingCard } from "@/components";
-import { pricingPlansList } from "@/services";
-import { useQuery } from "@tanstack/react-query";
+import { PRICING_PLANS } from "@/constants";
 
 const PricingPlans = () => {
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["pricingList"],
-    queryFn: pricingPlansList,
-  });
-  const ErrorMessage = error as string;
-
   return (
-    <main>
-      <h1>Pricing Plans</h1>
-      {isLoading && <p>Loading...</p>}
-      {ErrorMessage && <p>Error: {ErrorMessage}</p>}
-      <section className="flex flex-wrap gap-4">
-        {data && data.map((item) => <PricingCard item={item} key={item.id} />)}
+    <main className="container mx-auto px-4 pt-8">
+      <h1 className="mb-8 text-center text-4xl font-semibold">Pricing Plans</h1>
+      <section className="flex flex-wrap justify-center gap-4">
+        {PRICING_PLANS.map((item) => (
+          <PricingCard item={item} key={item.title} />
+        ))}
       </section>
     </main>
   );

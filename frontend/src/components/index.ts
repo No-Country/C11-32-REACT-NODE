@@ -6,3 +6,4 @@ export * from "./PaymentMethod";
 export { default as PricingCard } from "./PricingCard";
 export { default as RoutesWithNotFound } from "./RoutesWithNotFound";
 export * from "./Stepper";
+export { default as Toggle } from "./Toggle";
