@@ -13,6 +13,7 @@
     "@typescript-eslint/no-explicit-any": ["error", { "fixToUnknown": true }],
     "curly": "error",
     "no-empty": "error",
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+    "@typescript-eslint/no-var-requires": "off"
   }
 }
