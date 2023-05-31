@@ -3,14 +3,13 @@
 // import {createUser} from "../../Redux/states/user"
 
 function Login() {
-
   // const dispatch = useDispatch();
 
   // const logIn = async() => {
   //   try {
   //     const result = await getUser();
   //     dispatch(createUser(result));
-  //   }  
+  //   }
   //   catch (error) { /* empty */ }
   // };
 
@@ -19,7 +18,7 @@ function Login() {
       <h2> hola este es el logIN </h2>
       <button>LOGIN</button>
     </div>
-  )
+  );
 }
 
 export default Login;

@@ -1,7 +1,13 @@
-function Spin() {
+import { FC } from "react";
+
+interface SpinProps {
+  className?: string;
+}
+
+const Spin: FC<SpinProps> = ({ className }) => {
   return (
     <svg
-      className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
+      className={"-ml-1 mr-3 h-5 w-5 animate-spin " + className}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -21,6 +27,6 @@ function Spin() {
       ></path>
     </svg>
   );
-}
+};
 
 export default Spin;
