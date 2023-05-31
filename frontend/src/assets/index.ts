@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import logo from "./logonuevo.png";
 import PersonCard from "./PersonCard";
 import CardIc from "./CardIc";
 import TaskFinishIc from "./TaskFinishIc";
