@@ -4,6 +4,9 @@ import App from "./App.tsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { STRIPE_PUBLISHABLE_KEY } from "./config/config.ts";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,11 +16,15 @@ const queryClient = new QueryClient({
   },
 });
 
+const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <App />
+        <Elements stripe={stripePromise}>
+          <App />
+        </Elements>
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,

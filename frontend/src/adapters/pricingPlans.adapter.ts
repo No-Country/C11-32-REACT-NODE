@@ -6,6 +6,7 @@ export const pricingPlansListAdapter = (
   const pricingPlansList = JSON.parse(data) as PricingPlan[];
 
   return pricingPlansList.map((item) => ({
+    id: item.id,
     currency: item.currency,
     product: {
       name: item.product.name,
