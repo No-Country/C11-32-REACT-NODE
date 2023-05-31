@@ -5,6 +5,7 @@ import { Op }  from "sequelize";
 import { sequelize } from "../db";
 
 import CustomError from "../utils/custom-error";
+// import Memberships from "~/db/models/Membership.model";
 
 
 interface QueriesUser {
@@ -49,6 +50,7 @@ export default class UsersService {
   // { first_name, last_name, email, password, username, token }
   // { first_name, last_name, email, password, username, imageProfile, codephone, phone, country_id}
   static async createUser(user: UserAndProfilePayload): Promise<object> {
+    // const freeMembership = await Memberships.findOne({where: {name: "free"}}) || null;
     const transaction = await sequelize.transaction();
     try {
     
@@ -70,12 +72,12 @@ export default class UsersService {
           image_url: user.image_url || "local.host.e/profile/",
           user_id: newUser.id,
           role_id: 1,
-          membership_id: user.membership_id,
-          level: Number(user.level),
+          membership_id: user.membership_id || "14e29462-cad4-4bf3-924c-a240b525197a",
+          level: Number(user.level) || 0,
           is_kid_profile: user.is_kid_profile,
-          code_phone: Number(user.code_phone),
-          phone: Number(user.phone),
-          country_id: Number(user.country_id),
+          code_phone: Number(user.code_phone) || 0,
+          phone: Number(user.phone) || 0,
+          country_id: Number(user.country_id) || 0,
         },
         { transaction },
       );
@@ -91,7 +93,7 @@ export default class UsersService {
   }
 
   //Return Instance if we do not converted to json (or raw:true)
-  async getUserOr404(id: string) {
+  static async getUserOr404(id: string) {
     const user = await User.findByPk(id);
     if (!user) {
       throw new CustomError("Not found User", 404, "Not Found");
@@ -125,23 +127,25 @@ export default class UsersService {
   //   return cb(null, null);
   // }
 
-  // async updateUser(id, data) {
-  //   const transaction = await models.sequelize.transaction();
-  //   try {
-  //     let user = await models.Users.findByPk(id);
+  static async updateUser(id: string, data: object) {
+    const transaction = await sequelize.transaction();
+    try {
+      const user = await User.findByPk(id);
 
-  //     if (!user) throw new CustomError("Not found user", 404, "Not Found");
+      if (!user) {
+        throw new CustomError("Not found user", 404, "Not Found");
+      }
 
-  //     let updatedUser = await user.update(data, { transaction });
+      const updatedUser = await user.update(data, { transaction });
 
-  //     await transaction.commit();
-
-  //     return updatedUser;
-  //   } catch (error) {
-  //     await transaction.rollback();
-  //     throw error;
-  //   }
-  // }
+      await transaction.commit();
+      return updatedUser;
+      
+    } catch (error) {
+      await transaction.rollback();
+      throw error;
+    }
+  }
 
   // async removeUser(id) {
   //   const transaction = await models.sequelize.transaction();

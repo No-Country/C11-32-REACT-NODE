@@ -13,6 +13,9 @@ dependencies:
   express:
     specifier: ^4.18.2
     version: 4.18.2
+  jsonwebtoken:
+    specifier: ^9.0.0
+    version: 9.0.0
   pg:
     specifier: ^8.11.0
     version: 8.11.0
@@ -28,45 +31,12 @@ dependencies:
   sequelize-typescript:
     specifier: ^2.1.5
     version: 2.1.5(@types/node@20.1.5)(@types/validator@13.7.17)(reflect-metadata@0.1.13)(sequelize@6.31.1)
+  stripe:
+    specifier: ^12.6.0
+    version: 12.6.0
   tsc-alias:
     specifier: ^1.8.6
     version: 1.8.6
-lockfileVersion: 5.4
-
-specifiers:
-  '@types/cors': ^2.8.13
-  '@types/express': ^4.17.17
-  '@types/node': '*'
-  '@types/validator': ^13.7.17
-  '@typescript-eslint/eslint-plugin': ^5.59.6
-  '@typescript-eslint/parser': ^5.59.6
-  cors: ^2.8.5
-  dotenv: ^16.0.3
-  eslint: ^8.40.0
-  express: ^4.18.2
-  nodemon: ^2.0.22
-  pg: ^8.11.0
-  pg-hstore: ^2.3.4
-  reflect-metadata: ^0.1.13
-  sequelize: ^6.31.1
-  sequelize-typescript: ^2.1.5
-  stripe: ^12.6.0
-  ts-node: ^10.9.1
-  tsc-alias: ^1.8.6
-  tsconfig-paths: ^4.2.0
-  typescript: ^5.0.4
-
-dependencies:
-  cors: 2.8.5
-  dotenv: 16.0.3
-  express: 4.18.2
-  pg: 8.11.0
-  pg-hstore: 2.3.4
-  reflect-metadata: 0.1.13
-  sequelize: 6.31.1_pg-hstore@2.3.4+pg@8.11.0
-  sequelize-typescript: 2.1.5_mohzlxqda4enumdxbkxivkvmnq
-  stripe: 12.6.0
-  tsc-alias: 1.8.6
 
 devDependencies:
   '@types/bcrypt':
@@ -78,6 +48,9 @@ devDependencies:
   '@types/express':
     specifier: ^4.17.17
     version: 4.17.17
+  '@types/jsonwebtoken':
+    specifier: ^9.0.2
+    version: 9.0.2
   '@types/node':
     specifier: '*'
     version: 20.1.5
@@ -291,6 +264,12 @@ packages:
 
   /@types/json-schema@7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/jsonwebtoken@9.0.2:
+    resolution: {integrity: sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==}
+    dependencies:
+      '@types/node': 20.1.5
     dev: true
 
   /@types/mime@1.3.2:
@@ -612,6 +591,10 @@ packages:
     dependencies:
       fill-range: 7.0.1
 
+  /buffer-equal-constant-time@1.0.1:
+    resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
+    dev: false
+
   /buffer-writer@2.0.0:
     resolution: {integrity: sha512-a7ZpuTZU1TRtnwyCNW3I5dc0wWNC3VR9S++Ewyk2HHZdrO3CQJqSpd+95Us590V6AL7JqUAH2IwZ/398PmNFgw==}
     engines: {node: '>=4'}
@@ -813,6 +796,12 @@ packages:
 
   /dottie@2.0.3:
     resolution: {integrity: sha512-4liA0PuRkZWQFQjwBypdxPfZaRWiv5tkhMXY2hzsa2pNf5s7U3m9cwUchfNKe8wZQxdGPQQzO6Rm2uGe0rvohQ==}
+    dev: false
+
+  /ecdsa-sig-formatter@1.0.11:
+    resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
+    dependencies:
+      safe-buffer: 5.2.1
     dev: false
 
   /ee-first@1.1.1:
@@ -1321,6 +1310,31 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
     dev: true
+
+  /jsonwebtoken@9.0.0:
+    resolution: {integrity: sha512-tuGfYXxkQGDPnLJ7SibiQgVgeDgfbPq2k2ICcbgqW8WxWLBAxKQM/ZCu/IT8SOSwmaYl4dpTFCW5xZv7YbbWUw==}
+    engines: {node: '>=12', npm: '>=6'}
+    dependencies:
+      jws: 3.2.2
+      lodash: 4.17.21
+      ms: 2.1.3
+      semver: 7.5.1
+    dev: false
+
+  /jwa@1.4.1:
+    resolution: {integrity: sha512-qiLX/xhEEFKUAJ6FiBMbes3w9ATzyk5W7Hvzpa/SLYdxNtng+gcurvrI7TbACjIXlsJyr05/S1oUhZrc63evQA==}
+    dependencies:
+      buffer-equal-constant-time: 1.0.1
+      ecdsa-sig-formatter: 1.0.11
+      safe-buffer: 5.2.1
+    dev: false
+
+  /jws@3.2.2:
+    resolution: {integrity: sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==}
+    dependencies:
+      jwa: 1.4.1
+      safe-buffer: 5.2.1
+    dev: false
 
   /levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -2044,8 +2058,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /supports-color@5.5.0:
-  /stripe/12.6.0:
+  /stripe@12.6.0:
     resolution: {integrity: sha512-aJat4pGA6fr5DvuojRVXMaOCAw8ceS3UQM4ux1BMUViG686NmOAf1psEh6Wu+NFUifoy6kV7+4APq66OlTWtTw==}
     engines: {node: '>=12.*'}
     dependencies:
@@ -2053,7 +2066,7 @@ packages:
       qs: 6.11.0
     dev: false
 
-  /supports-color/5.5.0:
+  /supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
     dependencies:

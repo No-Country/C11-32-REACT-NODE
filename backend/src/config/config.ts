@@ -5,5 +5,6 @@ export const CONFIG = {
   DATABASE_URL: process.env.DATABASE_URL || "",
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || "",
   STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY || "",
+  JWT_SECRET: process.env.JWT_SECRET || "",
 };
 

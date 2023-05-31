@@ -3,7 +3,7 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 
 export interface MembershipsI {
-    id?: string | null,
+    id?: string,
     name: string,
     description: string,
     price: number, 
@@ -21,7 +21,7 @@ class Memberships extends Model implements MembershipsI {
     @Column({
       primaryKey: true,
       defaultValue: DataType.UUIDV4,
-      type: DataType.TEXT,
+      type: DataType.UUID,
     })
       id!: string;
 

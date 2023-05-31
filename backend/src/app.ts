@@ -6,13 +6,13 @@ import routerApi from "./routes";
 import DBInit from "./db";
 const { PORT } = CONFIG;
 
-DBInit()
-  .then(() => {
-    console.log("Database conected");
-  })
-  .catch(() => {
-    console.log("Database not conected");
-  });
+// DBInit()
+//   .then(() => {
+//     console.log("Database conected");
+//   })
+//   .catch(() => {
+//     console.log("Database not conected");
+//   });
 
   
 const app = express();

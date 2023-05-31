@@ -1,7 +1,7 @@
 import { Table, Column, Model, AutoIncrement, PrimaryKey } from "sequelize-typescript";
 
 export interface RoleI {
-    id?: number | null,
+    id?: number,
     description: string,
     status: number
 }
@@ -20,7 +20,9 @@ class Roles extends Model implements RoleI {
   @Column
     description!: string;
 
-  @Column
+  @Column({
+    defaultValue: 1
+  })
     status!: number;
 }
 
