@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-30 md:mt-0 md:ml-10 md:w-[600px] z-10">
+            <div className="mt-30 md:mt-0 md:ml-10 md:w-[700px] z-10">
               <img src="img/hero.avif" className="w-full" alt="" />
             </div>
           </div>
