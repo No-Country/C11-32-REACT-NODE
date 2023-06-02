@@ -18,15 +18,15 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
   };
 
   return (
-    <header>
-      <nav className="bg-gray-800 relative z-10">
+    <header className="sticky left-0 top-0 z-[100] mb-1 border-b-[1px] border-black/5 bg-white/50 backdrop-blur-sm">
+      <nav className=" relative text-black">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <img src={logo} alt="logo" style={{ width: "150px" }} />
               </div>
-              <div className="hidden md:block ml-auto">
+              <div className="ml-auto hidden md:block">
                 <div className="flex items-baseline space-x-4">
                   {navLinks.map(({ path, title }) => (
                     <NavBarItem key={path} path={path} title={title} />
@@ -35,9 +35,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
               </div>
             </div>
             <div className="hidden md:block">
-              <div className="ml-4 flex items-center md:ml-6">
-                {/* Agrega aquí cualquier elemento adicional para la versión de escritorio */}
-              </div>
+              <div className="ml-4 flex items-center md:ml-6"></div>
             </div>
             <div className="-mr-2 flex md:hidden">
               <button
@@ -85,21 +83,21 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
           </div>
         </div>
         {/* Menú desplegable para dispositivos móviles */}
-        <div className={`${isMenuOpen ? "block right-0" : "hidden"} md:hidden`}>
-  <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-    {navLinks.map(({ path, title }) => (
-      <NavBarItem
-        key={title}
-        path={path}
-        title={title}
-        toggle={toggleMenu}
-      />
-    ))}
-  </div>
-</div>
-
+        <div
+          className={`${isMenuOpen ? "right-0 block" : "hidden"} md:hidden `}
+        >
+          <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+            {navLinks.map(({ path, title }) => (
+              <NavBarItem
+                key={title}
+                path={path}
+                title={title}
+                toggle={toggleMenu}
+              />
+            ))}
+          </div>
+        </div>
       </nav>
-      
     </header>
   );
 };
