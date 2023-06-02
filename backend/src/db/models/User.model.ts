@@ -7,20 +7,23 @@ import {
   AllowNull,
   NotEmpty,
   Unique,
+  HasMany,
 } from "sequelize-typescript";
+import Profiles from "./Profile.model";
 
 export interface UserI {
-  id?: string | null;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  age: number;
+  id?: string,
+  first_name: string,
+  last_name: string,
+  email: string,
+  password: string,
+  age: number,
   // role_id?: number,
   // country: string;
-  gender: string;
+  gender: string,
   // membership_id?: string
-  status: string;
+  token?: string,
+  status: string,
 }
 
 @Table({
@@ -34,7 +37,7 @@ class Users extends Model implements UserI {
   @Column({
     primaryKey: true,
     defaultValue: DataType.UUIDV4,
-    type: DataType.TEXT,
+    type: DataType.UUID,
   })
   id!: string;
 
@@ -73,7 +76,13 @@ class Users extends Model implements UserI {
   gender!: string;
 
   @Column({
-    type: DataType.STRING(5)
+    type: DataType.TEXT
+  })
+  token!: string;
+
+  @Column({
+    type: DataType.STRING(25),
+    defaultValue: "Active"
   })
   status!: string;
   
@@ -99,6 +108,10 @@ class Users extends Model implements UserI {
 
   // @BelongsTo(() => Memberships)
   // membership: Memberships;
+
+  @HasMany(() => Profiles)
+  profile: Profiles;
+  
 }
 
 export default Users;

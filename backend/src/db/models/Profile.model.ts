@@ -8,19 +8,20 @@ import {
   Unique,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from "sequelize-typescript";
 import Roles from "./Role.model";
 import Memberships from "./Membership.model";
 import Users from "./User.model";
 
 export interface ProfileI {
-  id?: string | null;
+  id?: string;
   username: string;
   image_url?: string;
   user_id: string;
   role_id: number;
   membership_id?: string;
-  level?: string;
+  level?: number;
   is_kid_profile: boolean;
   code_phone?: number;
   phone?: number;
@@ -36,7 +37,7 @@ class Profiles extends Model implements ProfileI {
   @Column({
     primaryKey: true,
     defaultValue: DataType.UUIDV4,
-    type: DataType.UUID,
+    type: DataType.TEXT,
   })
     id!: string;
 
@@ -58,7 +59,9 @@ class Profiles extends Model implements ProfileI {
   @AllowNull(false)
   @NotEmpty
   @ForeignKey(() => Users)
-  @Column
+  @Column({
+    type: DataType.UUID
+  })
     user_id!: string;
 
   @AllowNull(false)
@@ -68,11 +71,13 @@ class Profiles extends Model implements ProfileI {
     role_id!: number;
 
   @ForeignKey(() => Memberships)
-  @Column
+  @Column({
+    type: DataType.UUID
+  })
     membership_id!: string;
 
   @Column
-    level!: string;
+    level!: number;
 
   @AllowNull(false)
   @NotEmpty
@@ -89,7 +94,8 @@ class Profiles extends Model implements ProfileI {
     country_id!: number;
 
   @Column({
-    type: DataType.STRING(5)
+    type: DataType.STRING(25),
+    defaultValue: "Active"
   })
     status!: string;
 
