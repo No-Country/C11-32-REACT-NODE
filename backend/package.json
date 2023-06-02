@@ -45,6 +45,7 @@
     "sequelize": "^6.31.1",
     "sequelize-typescript": "^2.1.5",
     "stripe": "^12.6.0",
-    "tsc-alias": "^1.8.6"
+    "tsc-alias": "^1.8.6",
+    "zod": "^3.21.4"
   }
 }

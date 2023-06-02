@@ -18,55 +18,55 @@ function DebitCard() {
                 points="0,50 35,50"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <polyline
                 points="0,20 20,20 35,35"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <polyline
                 points="50,0 50,35"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <polyline
                 points="65,35 80,20 100,20"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <polyline
                 points="100,50 65,50"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <polyline
                 points="35,35 65,35 65,65 35,65 35,35"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <polyline
                 points="0,80 20,80 35,65"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <polyline
                 points="50,100 50,65"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <polyline
                 points="65,65 80,80 100,80"
                 fill="none"
                 stroke="#000"
-                stroke-width="2"
+                strokeWidth="2"
               />
             </g>
           </svg>

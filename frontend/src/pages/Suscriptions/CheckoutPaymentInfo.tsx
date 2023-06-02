@@ -1,15 +1,15 @@
 import { CardPayment, DebitCard } from "@/components";
 import { PricingPlan } from "@/models";
-import { StripeElements } from "@stripe/stripe-js";
+import { StripeCardElement } from "@stripe/stripe-js";
 import { FC } from "react";
 
 interface CheckoutPaymentInfoProps {
-  element: StripeElements | null;
+  getCard: (value: StripeCardElement) => void;
   pricingPlan: Partial<PricingPlan> | undefined;
 }
 
 const CheckoutPaymentInfo: FC<CheckoutPaymentInfoProps> = ({
-  element,
+  getCard,
   pricingPlan = {},
 }) => {
   const { product, currency, amount = 1, interval } = pricingPlan;
@@ -23,7 +23,7 @@ const CheckoutPaymentInfo: FC<CheckoutPaymentInfoProps> = ({
         <h2 className="mb-4 text-center text-2xl font-semibold">
           Payment Information
         </h2>
-        <CardPayment element={element} />
+        <CardPayment getCard={getCard} />
       </section>
       <section className="flex-1">
         <div className="rounded-lg bg-white p-4 shadow-md">

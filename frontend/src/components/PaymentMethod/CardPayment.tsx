@@ -1,11 +1,8 @@
-import { useStripe, CardElement } from "@stripe/react-stripe-js";
-import {
-  CreatePaymentMethodData,
-  StripeCardElementOptions,
-  StripeElements,
-} from "@stripe/stripe-js";
+import { useStripe, CardElement, useElements } from "@stripe/react-stripe-js";
+import { StripeCardElementOptions } from "@stripe/stripe-js";
 import { FC, useId } from "react";
 import { Button } from "..";
+import { StripeCardElement } from "@stripe/stripe-js";
 
 const options: StripeCardElementOptions = {
   classes: {
@@ -18,33 +15,38 @@ const options: StripeCardElementOptions = {
 };
 
 interface CardFormProps {
-  element: StripeElements | null;
+  getCard: (value: StripeCardElement) => void;
 }
 
-const CardForm: FC<CardFormProps> = ({ element }) => {
+const CardForm: FC<CardFormProps> = ({ getCard }) => {
+  const elements = useElements();
+  const cardElement = elements?.getElement(CardElement);
+
+  if (cardElement) getCard(cardElement);
+
   const idCard = useId();
   const stripe = useStripe();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
 
-    const card = element?.getElement(CardElement);
-    if (!stripe || !card) {
-      return;
-    }
+  //   const card = element?.getElement(CardElement);
+  //   if (!stripe || !card) {
+  //     return;
+  //   }
 
-    const optionsPaymentMethod: CreatePaymentMethodData = {
-      type: "card",
-      card,
-    };
+  //   const optionsPaymentMethod: CreatePaymentMethodData = {
+  //     type: "card",
+  //     card,
+  //   };
 
-    const payload = await stripe.createPaymentMethod(optionsPaymentMethod);
+  //   const payload = await stripe.createPaymentMethod(optionsPaymentMethod);
 
-    console.log("[PaymentMethod]", payload);
-  };
+  //   console.log("[PaymentMethod]", payload);
+  // };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <label
         htmlFor={idCard}
         className={"mb-2 block text-sm font-bold text-gray-700 "}
@@ -64,7 +66,7 @@ const CardForm: FC<CardFormProps> = ({ element }) => {
       <Button type="submit" disabled={!stripe} className="mt-4">
         Pay
       </Button>
-    </form>
+    </div>
   );
 };
 

@@ -1,22 +1,36 @@
-import { Button, Card, Stepper } from "@/components";
-import { useElements, useStripe } from "@stripe/react-stripe-js";
+import { Button, Card, Form, ScreenLoader, Stepper } from "@/components";
 import { useState } from "react";
 import { CheckoutPaymentInfo, CheckoutPersonalnfo } from ".";
 import { checkoutFormSteps } from "@/constants/formSteps";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getPricingPlanById } from "@/services";
+import { useMutation } from "@tanstack/react-query";
+import { addSubscription } from "@/services";
+import { FieldValues, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { checkoutSchema, userSchema } from "@/schemas";
+import { initialFormUser } from "@/constants";
+import { useCheckout } from "@/hooks";
+import { Subscription, User } from "@/models";
 
 const Checkout = () => {
-  const { id } = useParams();
+  const { createPayment, getCard } = useCheckout();
+  const { id = "" } = useParams();
   const [stepForm, setStepForm] = useState(0);
-  const stripe = useStripe();
-  const elements = useElements();
-  const { data } = useQuery({
-    queryKey: ["getPricingPlan"],
-    queryFn: () => getPricingPlanById(id),
-  });
 
+  const { mutate, isLoading, isSuccess, error, isError, data } = useMutation({
+    mutationFn: (data: Subscription) => addSubscription(data),
+  });
+  console.log("TCL: Checkout -> error", error);
+
+  const methods = useForm<FieldValues>({
+    resolver: zodResolver(userSchema),
+    defaultValues: initialFormUser,
+    mode: "all",
+    criteriaMode: "all",
+  });
+  const hasErrorForm = Object.keys(methods.formState.errors).length === 0;
+
+  console.log(methods.formState.errors);
   const handleClickPrev = (): void => {
     if (stepForm > 0) {
       setStepForm(stepForm - 1);
@@ -25,19 +39,36 @@ const Checkout = () => {
 
   const handleClickNext = (): void => {
     if (stepForm < checkoutFormSteps.length - 1) {
-      setStepForm(stepForm + 1);
+      methods.trigger().then((error) => {
+        if (!error) return;
+
+        setStepForm(stepForm + 1);
+      });
     }
   };
 
+  const handleSubmit = async (data) => {
+    const customer = data as User;
+    console.log("TCL: data", data);
+    const paymentId = (await createPayment()) ?? "";
+    mutate({
+      customer,
+      paymentId,
+      planId: id,
+    });
+  };
+
+  if (isLoading) return <ScreenLoader />;
+
   return (
     <div className="container mx-auto flex flex-col content-center gap-4 p-4 md:px-20">
-      <form>
+      <Form methods={methods} onSubmit={handleSubmit}>
         <Stepper steps={checkoutFormSteps} activeStep={stepForm} />
 
         <Card>
           {stepForm === 0 && <CheckoutPersonalnfo />}
           {stepForm === 1 && (
-            <CheckoutPaymentInfo element={elements} pricingPlan={data} />
+            <CheckoutPaymentInfo getCard={getCard} pricingPlan={data} />
           )}
           <div className="mt-16 flex justify-between gap-2">
             <Button
@@ -50,13 +81,13 @@ const Checkout = () => {
             <Button
               className="w-max"
               onClick={handleClickNext}
-              disabled={stepForm === 1}
+              disabled={stepForm === 1 || !hasErrorForm}
             >
               Next
             </Button>
           </div>
         </Card>
-      </form>
+      </Form>
     </div>
   );
 };
