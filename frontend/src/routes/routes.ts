@@ -1,8 +1,8 @@
 export const ROUTES = {
   about: "/about",
-
   roadMap: "/roadmap",
   blog: "/blog",
+  specially: "/Specially",
   rooms: "/rooms",
   auth: {
     login: "/auth/login",
