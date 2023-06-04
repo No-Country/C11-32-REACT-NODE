@@ -8,6 +8,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { STRIPE_PUBLISHABLE_KEY } from "./config/config.ts";
 import { Toaster } from "sonner";
+import { AuthProvider } from "./context/AuthProvider.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,10 +24,12 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <Elements stripe={stripePromise}>
-          <Toaster expand visibleToasts={2} />
-          <App />
-        </Elements>
+        <AuthProvider>
+          <Elements stripe={stripePromise}>
+            <Toaster expand visibleToasts={2} />
+            <App />
+          </Elements>
+        </AuthProvider>
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,

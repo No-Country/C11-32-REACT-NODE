@@ -6,3 +6,8 @@ export const initialFormUser = {
   repeat_password: "",
   age: "",
 };
+
+export const initialFormLogin = {
+  email: "",
+  password: "",
+};
