@@ -37,7 +37,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       {
         price: "50 usd",
         duration: "1 year",
-        url: `${ROUTES.suscriptions.checkout}price_1NAvuaL4adfpEVLtZKEp5DZt`,
+        url: `${ROUTES.suscriptions.checkout}/price_1NAvuaL4adfpEVLtZKEp5DZt`,
       },
     ],
     features: [

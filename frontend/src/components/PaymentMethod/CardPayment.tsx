@@ -1,6 +1,6 @@
 import { useStripe, CardElement, useElements } from "@stripe/react-stripe-js";
 import { StripeCardElementOptions } from "@stripe/stripe-js";
-import { FC, useId } from "react";
+import { FC, useEffect, useId, useState } from "react";
 import { Button } from "..";
 import { StripeCardElement } from "@stripe/stripe-js";
 
@@ -8,7 +8,7 @@ const options: StripeCardElementOptions = {
   classes: {
     base: "w-full rounded-md border border-gray-300 px-3 py-2  text-base focus:border-indigo-500 focus:outline-none h-10 pt-3",
     invalid: "text-red-600",
-    focus: "focus:border-indigo-500 focus:outline-none",
+    focus: "border-indigo-500 outline-none",
   },
   hidePostalCode: true,
   iconStyle: "solid",
@@ -19,31 +19,19 @@ interface CardFormProps {
 }
 
 const CardForm: FC<CardFormProps> = ({ getCard }) => {
+  const [isCardReady, setIsCardReady] = useState(false);
   const elements = useElements();
   const cardElement = elements?.getElement(CardElement);
 
-  if (cardElement) getCard(cardElement);
+  useEffect(() => {
+    if (cardElement && isCardReady) {
+      console.log("entro a card");
+      getCard(cardElement);
+    }
+  }, [cardElement, getCard, isCardReady]);
 
   const idCard = useId();
   const stripe = useStripe();
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   const card = element?.getElement(CardElement);
-  //   if (!stripe || !card) {
-  //     return;
-  //   }
-
-  //   const optionsPaymentMethod: CreatePaymentMethodData = {
-  //     type: "card",
-  //     card,
-  //   };
-
-  //   const payload = await stripe.createPaymentMethod(optionsPaymentMethod);
-
-  //   console.log("[PaymentMethod]", payload);
-  // };
 
   return (
     <div>
@@ -57,10 +45,7 @@ const CardForm: FC<CardFormProps> = ({ getCard }) => {
         id={idCard}
         options={options}
         onReady={() => {
-          console.log("CardElement [ready]");
-        }}
-        onChange={(event) => {
-          console.log("CardElement [change]", event);
+          setIsCardReady(true);
         }}
       />
       <Button type="submit" disabled={!stripe} className="mt-4">

@@ -7,7 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { addSubscription } from "@/services";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { checkoutSchema, userSchema } from "@/schemas";
+import { userSchema } from "@/schemas";
 import { initialFormUser } from "@/constants";
 import { useCheckout } from "@/hooks";
 import { Subscription, User } from "@/models";
@@ -20,7 +20,6 @@ const Checkout = () => {
   const { mutate, isLoading, isSuccess, error, isError, data } = useMutation({
     mutationFn: (data: Subscription) => addSubscription(data),
   });
-  console.log("TCL: Checkout -> error", error);
 
   const methods = useForm<FieldValues>({
     resolver: zodResolver(userSchema),
@@ -49,8 +48,8 @@ const Checkout = () => {
 
   const handleSubmit = async (data) => {
     const customer = data as User;
-    console.log("TCL: data", data);
     const paymentId = (await createPayment()) ?? "";
+
     mutate({
       customer,
       paymentId,
@@ -65,11 +64,9 @@ const Checkout = () => {
       <Form methods={methods} onSubmit={handleSubmit}>
         <Stepper steps={checkoutFormSteps} activeStep={stepForm} />
 
-        <Card>
+        <Card className="mt-8">
           {stepForm === 0 && <CheckoutPersonalnfo />}
-          {stepForm === 1 && (
-            <CheckoutPaymentInfo getCard={getCard} pricingPlan={data} />
-          )}
+          {stepForm === 1 && <CheckoutPaymentInfo getCard={getCard} />}
           <div className="mt-16 flex justify-between gap-2">
             <Button
               className="w-max"
