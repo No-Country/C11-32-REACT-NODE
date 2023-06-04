@@ -14,16 +14,16 @@ interface ArticuloProps {
 
 const Articulo: React.FC<ArticuloProps> = ({ thumbnail, title, subtitle, enlaceblog, description, channel }) => {
   return (
-    <div className="card" style={{ maxWidth: "18rem" }}>
-      <img src={thumbnail} className="card-img-top" alt="Thumbnail" />
+    <div className="new-card" style={{ maxWidth: "18rem" }}>
+      <img src={thumbnail} className="new-card-img" alt="Thumbnail" />
       <div className="card-body">
         <h6 className="card-subtitle mb-2">{subtitle}</h6>
         <Link to={enlaceblog}>
-          <h5 className="card-title">{title}</h5>
+          <h5 className="new-card-title">{title}</h5>
         </Link>
-        <div className="line"></div> {/* Línea entre el título y la descripción */}
-        <p className="card-text">{description}</p>
-        <h5 className="card-title">{channel}</h5>
+        <div className="new-line"></div>
+        <p className="new-card-text">{description}</p>
+        <h5 className="new-card-title">{channel}</h5>
 
         <div className="feature d-flex">
           <div className="icon-sm me-4">
@@ -31,7 +31,7 @@ const Articulo: React.FC<ArticuloProps> = ({ thumbnail, title, subtitle, enlaceb
           </div>
         </div>
 
-        <Link to={enlaceblog} className="button-ver-mas">Ver más</Link> {/* Botón "Ver más" */}
+        <Link to={enlaceblog} className="new-button-ver-mas">Ver más</Link>
       </div>
     </div>
   );

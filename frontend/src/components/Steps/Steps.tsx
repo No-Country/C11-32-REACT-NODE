@@ -3,27 +3,27 @@ import { fondo2, horario, teachers, money, plataforma } from "@/assets";
 const Steps = () => {
   const stepsData = [
     {
-      title: 'Mejora tu Inglés',
-      description: 'Nuestra comunidad cuenta con más de 2000 profesores expertos, todos ellos con experiencia docente previa.',
+      title: 'Improve Your English',
+      description: 'Our community has over 2000 expert teachers, all with previous teaching experience.',
       image: teachers,
     },
     {
-      title: 'Asequible',
-      description: 'Con clases desde 22,04 PEN, SpeakUp! ofrece aprendizaje de idiomas a distancia que se ajusta a cualquier bolsillo.',
+      title: 'Affordable',
+      description: 'With classes starting from 22.04 PEN, SpeakUp! offers distance language learning that fits any budget.',
       image: money,
     },
     {
-      title: 'Horario flexible',
-      description: 'Te ofrecemos la posibilidad de aprender en función de tus horarios. Reserva tus clases cuando quieras aprender.',
+      title: 'Flexible Schedule',
+      description: 'We offer the possibility to learn based on your schedule. Reserve your classes whenever you want to learn.',
       image: horario,
     },
     {
-      title: 'Plataforma todo en uno',
-      description: 'odo tu aprendizaje en una plataforma completa que te acompañará en cualquier lugar.',
+      title: 'All-in-One Platform',
+      description: 'All your learning in one comprehensive platform that accompanies you anywhere.',
       image: plataforma,
     },
   ];
-
+  
   return (
     <div className="contenedorpadre" style={{
       backgroundImage: `url(${fondo2})`,
