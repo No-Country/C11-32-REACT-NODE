@@ -5,7 +5,7 @@ import horario from "./horario.svg";
 import money from "./money.svg";
 import teachers from "./teachers.svg";
 import fondo2 from "./fondo2.svg";
-
+import personLogin from "./imgs/person-login.webp";
 
 import PersonCard from "./PersonCard";
 import CardIc from "./CardIc";
@@ -30,4 +30,5 @@ export {
   CircleCardBg,
   PointsCardBg,
   CheckIc,
+  personLogin,
 };
