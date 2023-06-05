@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import Suscriptions from "./Suscription.model";
 
 
 
@@ -51,6 +52,14 @@ class Memberships extends Model implements MembershipsI {
       type: DataType.TIME
     })
       date_end!: Date;
+
+
+
+      
+
+    @HasMany(() => Suscriptions)
+      suscription: Suscriptions;
+
   }
 
 export default Memberships;
