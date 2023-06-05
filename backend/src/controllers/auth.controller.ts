@@ -25,14 +25,8 @@ const postLogin = (req: Request, res: Response, next: NextFunction) => {
       }
     })
     .catch((err) => {
-      console.log("TCL: postLogin -> ", err);
       next(err);
     });
-
-  // res.status(400).json({
-  //   message: "Missing data",
-  //   fields: { email: "example@example.com", password: "string *" },
-  // });
 };
 
 export default postLogin;

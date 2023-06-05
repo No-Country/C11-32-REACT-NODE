@@ -20,7 +20,6 @@ const CheckoutPaymentInfo: FC<CheckoutPaymentInfoProps> = ({ getCard }) => {
   const [pricingPlan, setPricingPlan] = useState<PricingPlan>();
   const methods = useFormContext();
   const values: User = methods.watch() as User;
-  console.log("TCL: values", values);
   const { id = "" } = useParams();
   useEffect(() => {
     const foundPlan = PRICING_PLANS.find((plan) =>
@@ -35,7 +34,6 @@ const CheckoutPaymentInfo: FC<CheckoutPaymentInfoProps> = ({ getCard }) => {
             intervalDefaults,
         ],
       };
-      console.log("TCL: selectedPlan", selectedPlan);
       setPricingPlan(selectedPlan);
     }
   }, [id]);

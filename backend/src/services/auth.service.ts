@@ -10,7 +10,7 @@ const checkUserCredencial = async (email: string, password: string): Promise<Use
   try {
     const user = await Users.findOne({
       where: { email },
-      include: { model: Profiles, as: "profile", attributes: ["username"] },
+      include: [{ model: Profiles, as: "profile", attributes: ["username"] }],
       // include: [
       //   {
       //     model: Profiles,

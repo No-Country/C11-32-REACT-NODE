@@ -1,6 +1,6 @@
 import { Input } from "@/components";
 
-const CheckoutPersonalnfo = () => {
+const PersonalnfoForm = () => {
   return (
     <div>
       <h2 className="mb-4 text-2xl font-semibold">Personal Information</h2>
@@ -16,4 +16,4 @@ const CheckoutPersonalnfo = () => {
   );
 };
 
-export default CheckoutPersonalnfo;
+export default PersonalnfoForm;
