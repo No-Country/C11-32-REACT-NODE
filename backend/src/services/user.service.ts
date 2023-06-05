@@ -61,7 +61,7 @@ export default class UsersService {
           email: user.email,
           password: new BcryptAdapter(10).encrypt(user.password),
           age: user.age,
-          gender: user.gender,
+          // gender: user.gender,
         },
         { transaction },
       );

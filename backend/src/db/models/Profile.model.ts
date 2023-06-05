@@ -9,10 +9,12 @@ import {
   ForeignKey,
   BelongsTo,
   HasMany,
+  // HasMany,
 } from "sequelize-typescript";
 import Roles from "./Role.model";
 import Memberships from "./Membership.model";
 import Users from "./User.model";
+import Suscriptions from "./Suscription.model";
 
 export interface ProfileI {
   id?: string;
@@ -37,7 +39,7 @@ class Profiles extends Model implements ProfileI {
   @Column({
     primaryKey: true,
     defaultValue: DataType.UUIDV4,
-    type: DataType.TEXT,
+    type: DataType.UUID,
   })
     id!: string;
 
@@ -103,12 +105,14 @@ class Profiles extends Model implements ProfileI {
 
   @BelongsTo(() => Users)
     user: Users; 
-
   @BelongsTo(() => Roles)
     role: Roles;
-
   @BelongsTo(() => Memberships)
     membership: Memberships;
+
+
+  @HasMany(() => Suscriptions)
+    suscription: Suscriptions;
 }
 
 export default Profiles;

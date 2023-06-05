@@ -18,18 +18,15 @@ export function getUsers(request: Request, response: Response, next: NextFunctio
 
 export async function addUser(request: Request, response: Response, next: NextFunction) {
   const body: UserAndProfilePayload = request.body;
-  const { first_name, last_name, email, username, password, age, gender, is_kid_profile } = body;
-  if (first_name && last_name && email && username && password && age && gender && is_kid_profile) {
-    try {
-      const user = await UsersService.createUser(body);
-      return response.status(201).json({ result: user });
-    } catch (error) {
-      console.log(error);
-      next(error);
-    } finally {
-      await sequelize.close();
-    }
-  } else {
+  console.log("body", body);
+  // const { first_name, last_name, email, username, password, age, gender, is_kid_profile } = body;
+  // if (first_name && last_name && email && username && password && age && gender && is_kid_profile) {
+  try {
+    console.log("try", body);
+    const user = await UsersService.createUser(body);
+    return response.status(201).json({ result: user });
+  } catch (error) {
+    console.log(error);
     return response.status(400).json({
       messege: "missing fields",
       fields: {
@@ -47,10 +44,16 @@ export async function addUser(request: Request, response: Response, next: NextFu
         country_id: "integer",
       },
     });
+    // next(error);
+  } finally {
+    await sequelize.close();
   }
+  // } else {
+
+  // }
 }
 
-export async function getUser(request: Request, response: Response, next: NextFunction) {
+export async function getUserById(request: Request, response: Response, next: NextFunction) {
   try {
     const { id } = request.params;
     const user = await UsersService.getUserOr404(id);
