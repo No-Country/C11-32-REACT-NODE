@@ -70,15 +70,15 @@ export default class UsersService {
   }
 
   //Return not an Instance raw:true | we also can converted to Json instead
-  async findUserById(id: string) {
+  static async findUserById(id: string) {
     const user = await User.findByPk(id, { raw: true });
     return user;
   }
 
-  // async findUserByEmail(email: string) {
-  //   const user = await User.findOne(email, { raw: true })
-  //   return user;
-  // }
+  static async findUserByEmail(email: string) {
+    const user = await User.findOne({ where: { email }, raw: true });
+    return user;
+  }
 
   // async findUserByToken(token: string, cb: string) {
   //   process.nextTick( async () => {
