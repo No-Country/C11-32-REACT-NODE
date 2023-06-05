@@ -1,7 +1,7 @@
 export { default as About } from "./About/About";
 export { default as Articulo } from "./Blog/Articulo";
 export { default as ContainerBlog } from "./Blog/ContainerBlog";
-export { default as Specially } from "./Blog/Specially";
+export { default as Specially } from "./Clases/Specially";
 
 export { default as Hero } from "./Hero/Hero";
 export { default as Home } from "./Home/Home";
