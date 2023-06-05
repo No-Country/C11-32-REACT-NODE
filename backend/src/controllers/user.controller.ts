@@ -28,8 +28,6 @@ export async function addUser(request: Request, response: Response, next: NextFu
   try {
     const existingEmail = await UsersService.findUserByEmail(email);
 
-    console.log("TCL: addUser -> existingEmail", existingEmail);
-
     if (existingEmail) {
       return response.status(409).json({ message: msg.duplicateEmail });
     }
