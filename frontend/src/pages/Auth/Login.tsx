@@ -1,5 +1,5 @@
-import { personLogin } from "@/assets";
-import { Button, Card, Form, Input } from "@/components";
+import { logo } from "@/assets";
+import { Button, Form, Input } from "@/components";
 import { initialFormLogin } from "@/constants";
 import { useAuth, useToastMessage } from "@/hooks";
 import { Login, loginSchema } from "@/schemas";
@@ -40,25 +40,51 @@ const Login = () => {
   }, [isSuccess, data]);
 
   return (
-    <main className=" container mx-auto p-4">
-      <h1 className="my-8 text-center text-4xl  font-semibold">
-        Log in to your account
-      </h1>
-      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row-reverse md:px-8 lg:px-32">
+    <main className="container mx-auto p-4">
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
-          src={personLogin}
-          alt="person with glass"
-          className="mx-auto w-[40%] md:w-[30%]"
+          className="mx-auto h-10 w-auto"
+          src={logo}
+          alt="Your Company"
         />
-        <Card className=" h-max w-full max-w-2xl pb-8 sm:w-[37.5rem]">
-          <Form methods={methods} onSubmit={handleSubmit}>
-            <Input name="email" label="Email" />
-            <Input name="password" label="Password" type="password" />
-            <Button isLoading={isLoading}>Log in</Button>
-          </Form>
-        </Card>
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          Sign in to your account
+        </h2>
       </div>
-    </main>
+  
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <Form methods={methods} onSubmit={handleSubmit}>
+          <Input
+            name="email"
+            label="Email address"
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+          <Input
+            name="password"
+            label="Password"
+            type="password"
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+          <Button
+            isLoading={isLoading}
+            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Sign in
+          </Button>
+        </Form>
+  
+        <p className="mt-10 text-center text-sm text-gray-500">
+          Not a member?{' '}
+          <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            Start for free
+          </a>
+        </p>
+      </div>
+    </div>
+  </main>
+  
+    
   );
 };
 
