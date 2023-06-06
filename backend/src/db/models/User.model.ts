@@ -20,7 +20,7 @@ export interface UserI {
   age: number,
   // role_id?: number,
   // country: string;
-  gender: string,
+  // gender: string,
   // membership_id?: string
   token?: string,
   status: string,
@@ -72,8 +72,8 @@ class Users extends Model implements UserI {
   @Column
   age!: number;
   
-  @Column
-  gender!: string;
+  // @Column
+  // gender!: string;
 
   @Column({
     type: DataType.TEXT

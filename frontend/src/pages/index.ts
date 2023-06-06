@@ -1,15 +1,23 @@
 export { default as About } from "./About/About";
+export * from "./Auth";
 export { default as Articulo } from "./Blog/Articulo";
 export { default as ContainerBlog } from "./Blog/ContainerBlog";
+export { default as Boton } from "./Boton/Boton";
+export { default as CampoTexto } from "./CampoTexto/CampoTexto";
 export { default as Specially } from "./Clases/Specially";
-
+export { default as Footer } from "./Footer/Footer";
+export { default as Formulario } from "./Formulario/Formulario";
+export { default as Header } from "./Header/Header";
 export { default as Hero } from "./Hero/Hero";
 export { default as Home } from "./Home/Home";
-export { default as Login } from "./Login/Login";
-
+export { default as ListaNiveles } from "./ListaNiveles/ListaNiveles";
+export { default as ListaOpciones } from "./ListaOpciones/ListaOpciones";
+export { default as MiOrg } from "./MiOrg/MiOrg";
 export { default as ContainerRoad } from "./RoadMap/ContainerRoad";
 export { default as Hito } from "./RoadMap/Hito";
 export { default as RoadMap } from "./RoadMap/RoadMap";
+export { default as Meeting } from "./Sala/Meeting";
+export { default as Meetings } from "./Salas/Meetings";
 export { default as Store } from "./Store/Store";
 export * from "./Suscriptions";
 export * from "./VideoCalling/API";

@@ -4,8 +4,6 @@ import { addUser } from "../controllers/user.controller";
 
 const routeUser = Router();
 
-routeUser
-  .post("/login", postLogin)
-  .post("/singup", addUser);
+routeUser.post("/login", postLogin).post("/signup", addUser);
 
 export default routeUser;

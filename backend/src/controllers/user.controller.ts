@@ -1,6 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import { sequelize } from "~/db/models";
-import UsersService, { UserAndProfilePayload } from "~/services/user.service";
+import { UserI } from "~/db/models/User.model";
+import UsersService from "~/services/user.service";
+
+const msg = {
+  addSuccess: "the account was created correctly",
+  duplicateEmail: "there is already an account with that email",
+};
 
 export function getUsers(request: Request, response: Response, next: NextFunction) {
   UsersService.findAndCount(request.query)
@@ -17,40 +23,25 @@ export function getUsers(request: Request, response: Response, next: NextFunctio
 }
 
 export async function addUser(request: Request, response: Response, next: NextFunction) {
-  const body: UserAndProfilePayload = request.body;
-  const { first_name, last_name, email, username, password, age, gender, is_kid_profile } = body;
-  if (first_name && last_name && email && username && password && age && gender && is_kid_profile) {
-    try {
-      const user = await UsersService.createUser(body);
-      return response.status(201).json({ result: user });
-    } catch (error) {
-      console.log(error);
-      next(error);
-    } finally {
-      await sequelize.close();
+  const body: UserI = request.body;
+  const { email } = body;
+  try {
+    const existingEmail = await UsersService.findUserByEmail(email);
+
+    if (existingEmail) {
+      return response.status(409).json({ message: msg.duplicateEmail });
     }
-  } else {
-    return response.status(400).json({
-      messege: "missing fields",
-      fields: {
-        first_name: "string *",
-        last_name: "string *",
-        email: "example@gmail.com *",
-        username: "string *",
-        password: "string *",
-        age: "number *",
-        gender: "string *",
-        is_kid_profile: "boolean *",
-        image_url: "url",
-        code_phone: "number",
-        phone: "number",
-        country_id: "integer",
-      },
-    });
+
+    await UsersService.createUser(body);
+    return response.status(201).json({ message: msg.addSuccess });
+  } catch (error) {
+    next(error);
+  } finally {
+    await sequelize.close();
   }
 }
 
-export async function getUser(request: Request, response: Response, next: NextFunction) {
+export async function getUserById(request: Request, response: Response, next: NextFunction) {
   try {
     const { id } = request.params;
     const user = await UsersService.getUserOr404(id);
