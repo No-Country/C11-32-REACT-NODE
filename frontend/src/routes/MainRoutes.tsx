@@ -3,6 +3,8 @@ import { Navigate, Route } from "react-router-dom";
 import { ROUTES } from ".";
 import { RoutesWithNotFound } from "@/components";
 import Specially from "@/pages/Clases/Specially";
+import Abreviations from "@/pages/Clases/Abreviations";
+
 const About = lazy(() => import("@/pages/About/About"));
 const Home = lazy(() => import("@/pages/Home/Home"));
 const RoadMap = lazy(() => import("@/pages/RoadMap/RoadMap"));
@@ -23,6 +25,7 @@ const MainRoutes = () => {
       <Route path={ROUTES.roadMap} element={<RoadMap />} />
       <Route path={ROUTES.blog} element={<ContainerBlog />} />
       <Route path={ROUTES.specially} element={<Specially />} />
+      <Route path={ROUTES.abbreviations} element={<Abreviations />} />
 
       <Route path={ROUTES.rooms} element={<VideoCalling />} />
       <Route path={ROUTES.auth.login} element={<Login />} />

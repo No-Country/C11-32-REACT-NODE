@@ -1,0 +1,42 @@
+.flags-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flag-item {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 50%;
+    animation: bubbleAnimation 2s infinite;
+  }
+  
+  @keyframes bubbleAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .flags-section {
+    text-align: center;
+  }
+  
+  .bigger-title {
+    font-size: 58px; /* Ajusta el tamaño de la fuente según tus preferencias */
+  }
+  
+  .centered-title {
+    text-align: center;
+    padding: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  

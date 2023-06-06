@@ -9,6 +9,10 @@ interface FAQItem {
 const FAQ: React.FC = () => {
   const faqs: FAQItem[] = [
     {
+        question: 'What is the Conversation Meeting?',
+        answer: 'It`s an online meeting within a group of several people. We`re joined by those who want to communicate in English and develop speaking skills.',
+      },
+    {
       question: 'How can I join the session?',
       answer: 'Go to Rooms , Complete the form and Join Session',
     },
@@ -24,6 +28,8 @@ const FAQ: React.FC = () => {
         question: 'Are there any native speakers in the sessions?',
         answer: 'You can find people from different countries so YES you can practice with native speakers',
       }
+      
+                    
   ];
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

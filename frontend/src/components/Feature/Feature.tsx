@@ -36,7 +36,7 @@ const Feature = () => {
             </div>
           </div>
           <div className="relative">
-            <img src="/img/fe.png" alt="Product screenshot" className="w-full h-auto my-20 " />
+            <img src="https://i.ibb.co/Chm6S2j/tutoring-57f3288c60.gif" alt="Product screenshot" className="w-full h-auto my-20 " />
           </div>
         </div>
       </div>

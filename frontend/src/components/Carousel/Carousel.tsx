@@ -45,10 +45,10 @@ const Carousel: React.FC = () => {
     backgroundColor: 'transparent' // Cambia el color de fondo a transparente
   }}
 >
-        <div className="carousel-container" style={{ margin: '0 auto', width: '80%' }}>
+        <div className="carousel-container" style={{ margin: '0 auto', width: '90%' }}>
           <div className="text-center mb-8">
           <div className="text-container">
-  <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl py-3">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl py-3">
     English learners from all over the world!
   </h2>
 </div>

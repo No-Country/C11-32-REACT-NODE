@@ -79,8 +79,8 @@ const Hero: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-30 z-10 md:ml-10 md:mt-0 md:w-[700px]">
-              <img src="img/hero.avif" className="w-full" alt="" />
+            <div className="mt-30 z-10 md:ml-10 md:mt-0 md:w-[400px]">
+              <img src="https://i.ibb.co/fS0fKjK/03-Group-lessons-1-9ffeeddfc3-1.gif" className="w-full" alt="" />
             </div>
           </div>
         </div>
