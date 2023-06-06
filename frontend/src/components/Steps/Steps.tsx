@@ -1,4 +1,4 @@
-import { fondo2, horario, teachers, money, plataforma } from "@/assets";
+import {  horario, teachers, money, plataforma } from "@/assets";
 
 const Steps = () => {
   const stepsData = [
@@ -26,22 +26,15 @@ const Steps = () => {
   
   return (
     <div className="contenedorpadre" style={{
-      backgroundImage: `url(${fondo2})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      width: '80%',
-      height: '500px',
-      margin: '0 auto',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'transparent',
-      borderBottomLeftRadius: '70% 20%',
-      borderBottomRightRadius: '70% 20%'
+      backgroundPosition: 'center',
+
+      
     }}>
-      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 bg-cover bg-center min-h-screen">
+<div className="bg-cover bg-center min-h-64 pt-0">
         <div className="flex flex-col items-center justify-center py-24 sm:py-32">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:max-w-6xl justify-center"> {/* Añade 'justify-center' para centrar las cards */}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:max-w-6xl">
             {stepsData.map((step, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg p-8">
                 <div className="text-center">
@@ -55,6 +48,9 @@ const Steps = () => {
         </div>
       </div>
     </div>
+    
+
+    
   );
             }
 

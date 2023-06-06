@@ -3,6 +3,8 @@ import fondo from "./fondo.svg";
 import plataforma from "./plataforma.svg";
 import horario from "./horario.svg";
 import money from "./money.svg";
+import faq from "./faq.webp";
+
 import teachers from "./teachers.svg";
 import fondo2 from "./fondo2.svg";
 import personLogin from "./imgs/person-login.webp";
@@ -18,6 +20,7 @@ import CheckIc from "./CheckIc";
 
 export {
   logo,
+  faq,
   fondo,
   fondo2,
   money,
