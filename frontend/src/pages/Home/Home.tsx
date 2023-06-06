@@ -15,7 +15,6 @@ const Home: React.FC = () => {
       <Hero />
       <Feature></Feature>
       <Carousel></Carousel>
-      <Prices></Prices>
       <Testimonials></Testimonials>
       <Benefits></Benefits>
       <Steps></Steps>

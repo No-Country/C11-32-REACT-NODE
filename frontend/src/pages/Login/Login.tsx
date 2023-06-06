@@ -1,5 +1,5 @@
 import { logo } from "@/assets";
-import { Button, Card, Form, Input } from "@/components";
+import { Button, Form, Input } from "@/components";
 import { initialFormLogin } from "@/constants";
 import { useAuth, useToastMessage } from "@/hooks";
 import { Login, loginSchema } from "@/schemas";
