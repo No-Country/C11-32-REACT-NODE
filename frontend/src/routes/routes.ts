@@ -9,6 +9,7 @@ export const ROUTES = {
     login: "/auth/login",
     register: "/auth/register",
     logout: "/auth/logout",
+    profile: "/auth/profile",
   },
   suscriptions: {
     pricingPlans: "/pricing",

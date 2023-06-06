@@ -2,7 +2,8 @@ import { logo } from "@/assets";
 import { useState } from "react";
 import { NavBarItem } from ".";
 import { useAuth } from "@/hooks";
-import { filterNavItemsToLogin } from "@/utils";
+import { filterNavItemsToLogin, mergeProfileWithNavItems } from "@/utils";
+import { ProfileMenu } from "..";
 
 interface NavLinkItem {
   title: string;
@@ -15,7 +16,12 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
   const { auth } = useAuth() ?? {};
+  const { name, last_name } = auth ?? {};
   const filterNavstoLogin = filterNavItemsToLogin({ auth, navItems: navLinks });
+  const menuProfileWithNavsFilter = mergeProfileWithNavItems({
+    auth,
+    navItems: navLinks,
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -38,9 +44,11 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
                 </div>
               </div>
             </div>
-            <div className="hidden md:block">
-              <div className="ml-4 flex items-center md:ml-6"></div>
-            </div>
+            {auth && (
+              <div className="hidden md:block">
+                <ProfileMenu name={`${name} ${last_name}`} />
+              </div>
+            )}
             <div className="-mr-2 flex md:hidden">
               <button
                 type="button"
@@ -91,7 +99,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
           className={`${isMenuOpen ? "right-0 block" : "hidden"} md:hidden `}
         >
           <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-            {filterNavstoLogin.map(({ path, title }) => (
+            {menuProfileWithNavsFilter.map(({ path, title }) => (
               <NavBarItem
                 key={title}
                 path={path}

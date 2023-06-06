@@ -36,6 +36,8 @@ import Spin from "./Spin";
 import CircleCardBg from "./CircleCardBg";
 import PointsCardBg from "./PointsCardBg";
 import CheckIc from "./CheckIc";
+import UserIc from "./UserIc";
+import ExitIc from "./ExitIc";
 
 export {
   india,
@@ -65,4 +67,6 @@ export {
   CheckIc,
   personLogin,
   personRegister,
+  UserIc,
+  ExitIc,
 };
