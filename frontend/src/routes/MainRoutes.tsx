@@ -1,9 +1,10 @@
 import { lazy } from "react";
-import { Navigate, Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { ROUTES } from ".";
-import { RoutesWithNotFound } from "@/components";
+import { RoutesWithAuth, RoutesWithNotFound } from "@/components";
 import Specially from "@/pages/Clases/Specially";
 import Abreviations from "@/pages/Clases/Abreviations";
+import { Logout } from "@/pages";
 
 const About = lazy(() => import("@/pages/About/About"));
 const Home = lazy(() => import("@/pages/Home/Home"));
@@ -21,13 +22,9 @@ const MainRoutes = () => {
   return (
     <RoutesWithNotFound>
       <Route path="/" element={<Home />} />
-      <Route path={ROUTES.about} element={<About />} />
-      <Route path={ROUTES.roadMap} element={<RoadMap />} />
-      <Route path={ROUTES.blog} element={<ContainerBlog />} />
-      <Route path={ROUTES.specially} element={<Specially />} />
-      <Route path={ROUTES.abbreviations} element={<Abreviations />} />
-
       <Route path={ROUTES.rooms} element={<VideoCalling />} />
+      <Route path={ROUTES.about} element={<About />} />
+      <Route path={ROUTES.blog} element={<ContainerBlog />} />
       <Route path={ROUTES.auth.login} element={<Login />} />
       <Route path={ROUTES.auth.register} element={<Register />} />
       <Route
@@ -42,6 +39,13 @@ const MainRoutes = () => {
         path={`${ROUTES.suscriptions.checkout}`}
         element={<Navigate to={ROUTES.suscriptions.pricingPlans} />}
       />
+
+      <Route element={<RoutesWithAuth />}>
+        <Route path={ROUTES.roadMap} element={<RoadMap />} />
+        <Route path={ROUTES.specially} element={<Specially />} />
+        <Route path={ROUTES.abbreviations} element={<Abreviations />} />
+        <Route path={`${ROUTES.auth.logout}`} element={<Logout />} />
+      </Route>
     </RoutesWithNotFound>
   );
 };
