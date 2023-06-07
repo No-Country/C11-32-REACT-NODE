@@ -1,6 +1,10 @@
 import { ROUTES } from "@/routes";
 
-const navLinks = [
+interface NavLinkItem {
+  title: string;
+  path: string;
+}
+const navLinks: NavLinkItem[] = [
   {
     title: "Home",
     path: "/",
@@ -11,7 +15,7 @@ const navLinks = [
   },
   {
     title: "Rooms",
-    path: ROUTES.rooms,
+    path: ROUTES.rooms.default,
   },
   {
     title: "RoadMap",
@@ -33,8 +37,6 @@ const navLinks = [
     title: "Register",
     path: ROUTES.auth.register,
   },
-
-  // Agrega más objetos para cada enlace del navbar
 ];
 
 export default navLinks;
