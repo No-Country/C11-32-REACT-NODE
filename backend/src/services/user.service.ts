@@ -72,7 +72,7 @@ export default class UsersService {
           image_url: user.image_url || "local.host.e/profile/",
           user_id: newUser.id,
           role_id: 1,
-          membership_id: user.membership_id || "14e29462-cad4-4bf3-924c-a240b525197a",
+          membership_id: user.membership_id || "71ffcd67-bdcb-4c45-8211-e2366ffbe80c",
           level: Number(user.level) || 0,
           is_kid_profile: user.is_kid_profile,
           code_phone: Number(user.code_phone) || 0,

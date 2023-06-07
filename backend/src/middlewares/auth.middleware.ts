@@ -4,7 +4,11 @@ import { CONFIG } from "../config/config";
 import Users from "~/db/models/User.model";
 
 type Token = {
-  id?: string | undefined;
+  userId: string | undefined;
+  name: string;
+  surname: string;
+  username: string;
+  role: string;
   iat?: number;
 } & JwtPayload;
 
@@ -16,8 +20,9 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
     try {
       //? Token exists
       const token = jwt.verify(bearerToken, CONFIG.JWT_SECRET);
+      console.log("Token data: ", token);
       //? Fetch user valid token
-      const user = await Users.findByPk((token as Token)?.id);
+      const user = await Users.findByPk((token as Token)?.userId);
       if (!user) {
         res.status(404).json({ error: "User is not identified"});
       } 

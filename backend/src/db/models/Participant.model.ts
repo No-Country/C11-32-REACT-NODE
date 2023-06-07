@@ -1,4 +1,4 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, HasMany, Model, NotEmpty, Table } from "sequelize-typescript";
+import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, NotEmpty, Table } from "sequelize-typescript";
 import Rooms from "./Room.model";
 import Users from "./User.model";
 

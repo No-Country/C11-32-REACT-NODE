@@ -19,8 +19,6 @@ export function getUsers(request: Request, response: Response, next: NextFunctio
 export async function addUser(request: Request, response: Response, next: NextFunction) {
   const body: UserAndProfilePayload = request.body;
   console.log("body", body);
-  // const { first_name, last_name, email, username, password, age, gender, is_kid_profile } = body;
-  // if (first_name && last_name && email && username && password && age && gender && is_kid_profile) {
   try {
     console.log("try", body);
     const user = await UsersService.createUser(body);
@@ -36,7 +34,7 @@ export async function addUser(request: Request, response: Response, next: NextFu
         username: "string *",
         password: "string *",
         age: "number *",
-        gender: "string *",
+        // gender: "string *",
         is_kid_profile: "boolean *",
         image_url: "url",
         code_phone: "number",
@@ -48,9 +46,6 @@ export async function addUser(request: Request, response: Response, next: NextFu
   } finally {
     await sequelize.close();
   }
-  // } else {
-
-  // }
 }
 
 export async function getUserById(request: Request, response: Response, next: NextFunction) {

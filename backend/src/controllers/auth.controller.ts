@@ -4,17 +4,24 @@ import UsersService from "../services/user.service";
 import { CONFIG } from "~/config/config";
 import { NextFunction, Request, Response } from "express";
 
+
 const postLogin = (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
   chekUserCredential(email, password)
+    .then((data)=>data?.toJSON())
     .then((data) => {
+      console.log("Auth.Controller-User: ", data);
       if (data) {
+        const {username, role:{description}} = data.profile[0];
+        console.log("Usuario data: ", username);
         const token = jwt.sign(
           {
+            userId: data.id,
             name: data.first_name,
-            id: data.id,
-            // role: data.role
+            surname: data.last_name,
+            username,
+            role: description,
           },
           CONFIG.JWT_SECRET,
         );
