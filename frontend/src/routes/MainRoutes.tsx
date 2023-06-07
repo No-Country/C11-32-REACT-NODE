@@ -4,6 +4,7 @@ import { ROUTES } from ".";
 import { RoutesWithNotFound } from "@/components";
 import Specially from "@/pages/Clases/Specially";
 import Abreviations from "@/pages/Clases/Abreviations";
+import { Logout } from "@/pages";
 
 const About = lazy(() => import("@/pages/About/About"));
 const Home = lazy(() => import("@/pages/Home/Home"));
@@ -42,6 +43,7 @@ const MainRoutes = () => {
         path={`${ROUTES.suscriptions.checkout}`}
         element={<Navigate to={ROUTES.suscriptions.pricingPlans} />}
       />
+      <Route path={`${ROUTES.auth.logout}`} element={<Logout />} />
     </RoutesWithNotFound>
   );
 };
