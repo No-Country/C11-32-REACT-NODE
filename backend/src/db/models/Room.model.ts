@@ -1,76 +1,56 @@
-import { AllowNull, Column, DataType, HasMany, Model, NotEmpty, Table } from "sequelize-typescript";
+import { AllowNull, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import Participants from "./Participant.model";
 
 export interface RoomI {
-  id?: string;
+  id: string;
   title: string;
-  body: string;
-  type: string;
+  english_level: string;
   topic: string;
-  quantity: number;
-  current_quantity: number;
-  //   meet_id: string;
-  duration: Date;
-  level: string;
-  status?: string;
+  is_public: boolean;
+  max_participants: number;
+  current_participants: number;
+  meet_id: string;
+  status: string;
 }
 
 @Table({ tableName: "rooms" })
-class Rooms extends Model implements RoomI {
-  @Column({
-    primaryKey: true,
-    type: DataType.UUID,
-    defaultValue: DataType.UUIDV4,
-  })
-    id!: string;
+class Rooms extends Model {
+  @Column({ primaryKey: true, defaultValue: DataType.UUIDV4, type: DataType.UUID })
+  id!: string;
 
   @AllowNull(false)
-  @Column({ type: DataType.STRING(75) })
-    title!: string;
-
-  @Column({ type: DataType.TEXT })
-    body!: string;
+  @Column({ type: DataType.STRING })
+  title!: string;
 
   @AllowNull(false)
-  @Column({ type: DataType.STRING(3) })
-    type!: string;
+  @Column({ type: DataType.STRING })
+  english_level!: string;
 
   @AllowNull(false)
-  @Column({ type: DataType.STRING(150) })
-    topic!: string;
-
-  @AllowNull(false)
-  @NotEmpty
-  @Column({ type: DataType.INTEGER })
-    quantity!: number;
+  @Column({ type: DataType.BOOLEAN })
+  is_public!: boolean;
 
   @AllowNull(false)
   @Column({ type: DataType.INTEGER })
-    current_quantity!: number;
+  max_participants!: number;
 
-  //   @AllowNull(false)
-  //   @NotEmpty
-  //   @ForeignKey(() => Meets)
-  //   @Column({ type: DataType.UUID })
-  //     meet_id!: string;
+  @AllowNull(false)
+  @Column({ type: DataType.INTEGER, defaultValue: 0 })
+  current_participants!: number;
 
-  @Column({ type: DataType.TIME })
-    duration!: Date;
+  @AllowNull(false)
+  @Column({ type: DataType.STRING })
+  meet_id!: string;
 
-  @Column({ type: DataType.STRING(3) })
-    level!: string;
+  @AllowNull(false)
+  @Column({ type: DataType.STRING })
+  topic!: string;
 
-  @Column({ type: DataType.STRING(25), defaultValue: "Active" })
-    status!: string;
-
-  //   @BelongsTo(() => Meets)
-  //   meet : Meets;
-
-  //   @BelongsToMany(() => Participants, { as: 'members', through: () => Membership })
+  @Column({ type: DataType.STRING, defaultValue: "active" })
+  status!: string;
 
   @HasMany(() => Participants)
-    participants: Participants;
-
+  participants!: Participants[];
 }
 
 export default Rooms;

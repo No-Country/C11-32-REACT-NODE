@@ -6,5 +6,5 @@ export const CONFIG = {
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || "",
   STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY || "",
   JWT_SECRET: process.env.JWT_SECRET || "",
+  SDK_TOKEN: process.env.SDK_TOKEN || "",
 };
-
