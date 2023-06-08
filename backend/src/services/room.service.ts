@@ -19,7 +19,7 @@ export default class RoomsService {
       );
 
       await transaction.commit();
-      return { data: newRoom };
+      return { newRoom };
     } catch (error) {
       await transaction.rollback();
       throw error;
@@ -27,30 +27,26 @@ export default class RoomsService {
   }
 
   static async getAllRooms(): Promise<object[]> {
-    try {
-      const rooms = await Rooms.findAll({
-        where: {
-          status: "active",
-        },
-        include: [
-          {
-            model: Participants,
-            where: {
-              is_active: true,
-            },
-            attributes: ["id", "user_id"],
-            include: [
-              {
-                model: Users,
-                attributes: ["id", "first_name", "last_name", "email"],
-              },
-            ],
+    const rooms = await Rooms.findAll({
+      where: {
+        status: "active",
+      },
+      include: [
+        {
+          model: Participants,
+          where: {
+            is_active: true,
           },
-        ],
-      });
-      return rooms;
-    } catch (error) {
-      throw error;
-    }
+          attributes: ["id", "user_id"],
+          include: [
+            {
+              model: Users,
+              attributes: ["id", "first_name", "last_name", "email"],
+            },
+          ],
+        },
+      ],
+    });
+    return rooms;
   }
 }

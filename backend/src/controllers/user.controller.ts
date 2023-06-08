@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { sequelize } from "~/db/models";
 import { UserI } from "~/db/models/User.model";
-import UsersService, { UserAndProfilePayload } from "~/services/user.service";
+import UsersService from "~/services/user.service";
 import Sequelize from "sequelize";
 
 const msg = {
@@ -27,13 +27,13 @@ export async function addUser(request: Request, response: Response, next: NextFu
   const body: UserI = request.body;
   try {
     const newUser = await UsersService.createUser(body);
-    return response.status(201).json({ message: msg.addSuccess,  newUser});
+    return response.status(201).json({ message: msg.addSuccess, newUser });
   } catch (error) {
     console.log(error);
-    if(error instanceof Sequelize.UniqueConstraintError){
+    if (error instanceof Sequelize.UniqueConstraintError) {
       return response.status(400).json({ message: "Email or username already exist" });
     }
-    if(error instanceof Sequelize.ValidationError){
+    if (error instanceof Sequelize.ValidationError) {
       return response.status(400).json({ message: "missing fields" });
     }
     next(error);

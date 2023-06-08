@@ -17,5 +17,3 @@ export default async function DBInit() {
     console.log(error);
   }
 }
-
-// export default DBInit;

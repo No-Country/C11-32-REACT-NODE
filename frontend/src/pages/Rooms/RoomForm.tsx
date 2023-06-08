@@ -1,14 +1,20 @@
-import { Input } from "@/components";
+import { Input, RadioButton, Select } from "@/components";
+import { LANGUAJES, TOPICS } from "@/constants";
+
+const items = [
+  { id: true, name: "true" },
+  { id: false, name: "false" },
+];
 
 const RoomForm = () => {
   return (
     <div className="grid gap-x-4 md:grid-cols-2">
       <Input label="Title" name="title" />
-      <Input label="Languaje" name="language" />
+      <Select label="Languaje" name="language" items={LANGUAJES} />
       <Input label="Level" name="level" />
-      <Input label="Is public" name="is_public" />
       <Input label="Max participants" name="max_participants" max={5} />
-      <Input label="Topic" name="topic" />
+      <Select label="Topic" name="topic" items={TOPICS} />
+      <RadioButton label="Is public" name="is_public" items={items} />
     </div>
   );
 };

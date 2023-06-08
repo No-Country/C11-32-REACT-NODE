@@ -13,9 +13,10 @@ interface AuthContextProps {
 
 export interface Auth {
   token: string;
-  name: string;
+  first_name: string;
   last_name: string;
   hasSubscriptionActive: boolean;
+  id: string;
 }
 
 const AuthContext = createContext<AuthContextProps | null>(null);

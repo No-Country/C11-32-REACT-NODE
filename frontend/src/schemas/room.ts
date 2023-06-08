@@ -9,7 +9,7 @@ export const RoomSchema = z.object({
       message: "Invalid language selected",
     }),
   level: z.string().nonempty("Level is required"),
-  is_public: z.boolean(),
+  is_public: z.string(),
   max_participants: z
     .number()
     .int()

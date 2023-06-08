@@ -1,6 +1,6 @@
 import { BcryptAdapter } from "../utils/crypto";
 import User, { UserI } from "../db/models/User.model";
-import Profile, { ProfileI } from "../db/models/Profile.model";
+import { ProfileI } from "../db/models/Profile.model";
 import { Op } from "sequelize";
 import { sequelize } from "../db";
 

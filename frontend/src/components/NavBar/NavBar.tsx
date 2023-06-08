@@ -16,7 +16,7 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
   const { auth } = useAuth() ?? {};
-  const { name, last_name } = auth ?? {};
+  const { first_name, last_name } = auth ?? {};
   const filterNavstoLogin = filterNavItemsToLogin({ auth, navItems: navLinks });
   const menuProfileWithNavsFilter = mergeProfileWithNavItems({
     auth,
@@ -46,7 +46,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
             </div>
             {auth && (
               <div className="hidden md:block">
-                <ProfileMenu name={`${name} ${last_name}`} />
+                <ProfileMenu name={`${first_name} ${last_name}`} />
               </div>
             )}
             <div className="-mr-2 flex md:hidden">

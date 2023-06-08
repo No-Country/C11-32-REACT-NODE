@@ -4,11 +4,15 @@ import { RoomI } from "~/db/models/Room.model";
 import ParticipantsService from "~/services/participant.service";
 import RoomsService from "~/services/room.service";
 
+const msg = {
+  createSuccess: "The room was created successfully",
+};
+
 export async function createRoom(request: Request, response: Response, next: NextFunction) {
   const body: RoomI = request.body;
   try {
-    const newRoom = await RoomsService.createRoom(body);
-    return response.status(201).json({ result: newRoom });
+    const newRoom = (await RoomsService.createRoom(body)) as RoomI;
+    return response.status(201).json({ meet_id: newRoom.meet_id, message: msg.createSuccess });
   } catch (error) {
     next(error);
   } finally {

@@ -15,7 +15,7 @@ const ProfileMenu: FC<ProfileMenuProps> = ({ name }) => {
       <button
         onClick={() => setOpen(!open)}
         type="button"
-        className="group inline-flex items-center gap-2 rounded-md border px-4 py-2 text-base hover:text-gray-900"
+        className="group inline-flex items-center gap-2 rounded-md border bg-white px-4 py-2 text-base hover:text-gray-900"
         aria-expanded="false"
       >
         <Avvvatars value={name} />

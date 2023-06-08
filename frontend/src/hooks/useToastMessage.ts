@@ -3,7 +3,11 @@ import { toast } from "sonner";
 
 interface TostMessage {
   errors?: string[] | Error[] | unknown[];
-  successes?: string[];
+  successes?: string[] | Success[];
+}
+
+interface Success {
+  message?: string;
 }
 
 const useToastMessage = ({
@@ -19,8 +23,11 @@ const useToastMessage = ({
   }, [errors]);
 
   useEffect(() => {
-    successes.some((success) => {
+    successes.some((success: Success | string) => {
       if (typeof success === "string") toast.success(success);
+
+      if (typeof success === "object" && success?.message)
+        toast.success(success.message);
       return false;
     });
   }, [successes]);

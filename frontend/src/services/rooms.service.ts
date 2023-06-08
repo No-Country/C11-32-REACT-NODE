@@ -5,7 +5,8 @@ export const URL_ROOMS = {
   default: "/api/v1/rooms",
 };
 
-export const createRoom = async (data: Room, token: string) => {
+export const createRoom = async (data: Room, token = "") => {
+  console.log("TCL: createRoom -> token", token);
   const response = await Axios.post(URL_ROOMS.default, data, {
     headers: {
       Authorization: `Bearer ${token}`,

@@ -1,10 +1,12 @@
+/* eslint-disable indent */
 import { AllowNull, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import Participants from "./Participant.model";
 
 export interface RoomI {
   id: string;
   title: string;
-  english_level: string;
+  level: string;
+  language: string;
   topic: string;
   is_public: boolean;
   max_participants: number;
@@ -24,7 +26,11 @@ class Rooms extends Model {
 
   @AllowNull(false)
   @Column({ type: DataType.STRING })
-  english_level!: string;
+  level!: string;
+
+  @AllowNull(false)
+  @Column({ type: DataType.STRING })
+  language!: string;
 
   @AllowNull(false)
   @Column({ type: DataType.BOOLEAN })

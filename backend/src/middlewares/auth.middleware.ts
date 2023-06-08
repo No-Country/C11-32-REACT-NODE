@@ -19,7 +19,6 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
     try {
       //? Token exists
       const token = jwt.verify(bearerToken, CONFIG.JWT_SECRET);
-      console.log("Token data: ", token);
       //? Fetch user valid token
       const user = await Users.findByPk((token as Token)?.id);
       if (!user) {
@@ -31,7 +30,7 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
       //! Invalid token
       res.status(400).json({
         error: "Invalid token",
-        msj: error,
+        message: error,
       });
     }
   } else {
