@@ -37,6 +37,7 @@ const postLogin = async (req: Request, res: Response, next: NextFunction) => {
       first_name: userJson.first_name,
       last_name: userJson.last_name,
       hasSubscriptionActive,
+      id: userJson.id,
     });
   } catch (error) {
     next(error);

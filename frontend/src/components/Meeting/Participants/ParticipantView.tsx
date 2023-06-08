@@ -2,6 +2,7 @@ import { MicOff, MicOn } from "@/assets";
 import { useParticipant } from "@videosdk.live/react-sdk";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactPlayer from "react-player";
+import "../../../pages/Meeting/Meeting.css";
 
 const ParticipantView = ({ participantId }: { participantId: string }) => {
   const [mouseOver, setMouseOver] = useState(false);

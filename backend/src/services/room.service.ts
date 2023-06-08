@@ -19,7 +19,7 @@ export default class RoomsService {
       );
 
       await transaction.commit();
-      return { newRoom };
+      return newRoom.dataValues;
     } catch (error) {
       await transaction.rollback();
       throw error;
