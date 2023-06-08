@@ -21,6 +21,7 @@
     "axios": "^1.4.0",
     "install": "^0.13.0",
     "jwt-decode": "^3.1.2",
+    "parallax-js": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
@@ -30,8 +31,10 @@
     "react-router-dom": "^6.11.2",
     "react-slick": "^0.29.0",
     "react-youtube": "^10.1.0",
+    "scrollreveal": "^4.0.9",
     "slick-carousel": "^1.8.1",
     "sonner": "^0.4.0",
+    "swiper": "^9.3.2",
     "zod": "^3.21.4"
   },
   "devDependencies": {

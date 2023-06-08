@@ -1,6 +1,6 @@
 import { BcryptAdapter } from "../utils/crypto";
 import User, { UserI } from "../db/models/User.model";
-import { ProfileI } from "../db/models/Profile.model";
+import Profile, { ProfileI } from "../db/models/Profile.model";
 import { Op } from "sequelize";
 import { sequelize } from "../db";
 
@@ -48,9 +48,27 @@ export default class UsersService {
         {
           ...user,
           password: new BcryptAdapter(10).encrypt(user.password),
+          age: user.age,
+          // gender: user.gender,
         },
         { transaction },
       );
+
+      // const newProfile = await Profile.create(
+      //   {
+      //     username: user.username,
+      //     image_url: user.image_url || "local.host.e/profile/",
+      //     user_id: newUser.id,
+      //     role_id: 1,
+      //     membership_id: user.membership_id || "71ffcd67-bdcb-4c45-8211-e2366ffbe80c",
+      //     level: Number(user.level) || 0,
+      //     is_kid_profile: user.is_kid_profile,
+      //     code_phone: Number(user.code_phone) || 0,
+      //     phone: Number(user.phone) || 0,
+      //     country_id: Number(user.country_id) || 0,
+      //   },
+      //   { transaction },
+      // );
 
       await transaction.commit();
       return { newUser };

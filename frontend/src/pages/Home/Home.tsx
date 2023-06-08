@@ -5,20 +5,19 @@ import Testimonials from '@/components/Testimonials/Testimonials';
 import Carousel from '@/components/Carousel/Carousel';
 import Benefits from '@/components/Benefits/Benefits';
 import Steps from '@/components/Steps/Steps';
-import FAQ from '@/components/FAQ/FAQ';
-import Countries from '@/components/Countries/Countries';
+import Footer from '@/components/Footer/Footer';
 
 const Home: React.FC = () => {
   return (
     <>
       <Hero />
       <Feature></Feature>
-      <Carousel></Carousel>
       <Testimonials></Testimonials>
       <Benefits></Benefits>
       <Steps></Steps>
-      <FAQ></FAQ>
-      <Countries></Countries>
+      <Carousel></Carousel>
+
+      <Footer></Footer>
     </>
   );
 };
