@@ -1,10 +1,11 @@
 import logo from "../../assets/logonuevo.png";
 import {
   BottomBarContainer,
-  MemorizedParticipantView,
   PresenterView,
   SidebarContainer,
 } from "@/components";
+import MemorizedParticipantView from "@/components/Meeting/Participants/ParticipantsViewer";
+
 import { useMeeting } from "@videosdk.live/react-sdk";
 import { useEffect, useRef } from "react";
 

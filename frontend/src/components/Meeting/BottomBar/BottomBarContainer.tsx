@@ -36,8 +36,8 @@ interface Mic {
 }
 
 const MicBtn = () => {
-  const [mouseOver, setMouseOver] = useState<Boolean>(false);
-  const [tooltipShow, setTooltipShow] = useState<Boolean>(false);
+  const [mouseOver, setMouseOver] = useState<boolean>(false);
+  const [tooltipShow, setTooltipShow] = useState<boolean>(false);
   const [mics, setMics] = useState<Mic[]>([]);
   const [selectedMic, setSelectedMic] = useState<string>("");
   const { toggleMic, getMics, changeMic, localMicOn } = useMeeting();
@@ -157,8 +157,8 @@ const WebCamBtn = () => {
   const { localWebcamOn, toggleWebcam, getWebcams, changeWebcam } =
     useMeeting();
   const [webcams, setWebcams] = useState<WebCam[]>([]);
-  const [tooltipShow, setTooltipShow] = useState<Boolean>(false);
-  const [mouseOver, setMouseOver] = useState<Boolean>(false);
+  const [tooltipShow, setTooltipShow] = useState<boolean>(false);
+  const [mouseOver, setMouseOver] = useState<boolean>(false);
   const [selectedWebcam, setSelectedWebcam] = useState<string>("");
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -296,8 +296,8 @@ const ParticipantsBtn = ({ isMobile = false }: { isMobile?: boolean }) => {
 
 const MeetingCopyBtn = () => {
   const { meetingId } = useMeeting();
-  const [isCopied, setIsCopied] = useState<Boolean>(false);
-  const [tooltipShow, setTooltipShow] = useState<Boolean>(false);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+  const [tooltipShow, setTooltipShow] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleTooltip = () => {
@@ -449,7 +449,7 @@ const ScreenShareBtn = ({ isMobile = false }: { isMobile?: boolean }) => {
 };
 
 const MobileBtn = () => {
-  const [isOpen, setIsOpen] = useState<Boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleOpen = () => {

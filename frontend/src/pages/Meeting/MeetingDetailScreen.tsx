@@ -9,6 +9,10 @@ import {
 } from "@/assets";
 import { SettingBox } from "@/components";
 import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query";
+import { useAuth } from "@/hooks";
+import { JoinCall } from "@/models";
+import { roomsJoin } from "@/services";
 
 interface Device {
   deviceId: string;
@@ -25,6 +29,7 @@ interface Props {
   selectedWebcam: string;
   setWebcamOn: (webcamOn: boolean) => void;
   setStartMeeting: (startMeeting: boolean) => void;
+  meetId: string;
 }
 
 const MeetingDetailScreen = ({
@@ -35,6 +40,7 @@ const MeetingDetailScreen = ({
   setMicOn,
   selectedMic,
   selectedWebcam,
+  meetId,
   setWebcamOn,
   setStartMeeting,
 }: Props) => {
@@ -44,6 +50,11 @@ const MeetingDetailScreen = ({
     useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const { auth } = useAuth() ?? {};
+
+  const { mutate } = useMutation({
+    mutationFn: (data: JoinCall) => roomsJoin(data, auth?.token),
+  });
 
   useEffect(() => {
     const getMediaDevices = async () => {
@@ -192,6 +203,12 @@ const MeetingDetailScreen = ({
     setSettingDialogueOpen(false);
   };
 
+  const handleJoinCall = () => {
+    if (!auth) return;
+    setStartMeeting(true);
+    mutate({ meet_id: meetId, user_id: auth?.id });
+  };
+
   return (
     <div className="fixed inset-0 bg-white" style={{ zIndex: 9999 }}>
       <div className="flex h-full flex-col">
@@ -263,7 +280,8 @@ const MeetingDetailScreen = ({
               <div className="flex w-full flex-col p-1.5 sm:p-4 lg:p-12">
                 <button
                   className="button-meeting w-full rounded-lg px-4  py-3 "
-                  onClick={() => setStartMeeting(true)}
+                  onClick={handleJoinCall}
+                  disabled={!auth}
                 >
                   Join a metting
                 </button>

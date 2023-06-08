@@ -7,8 +7,10 @@ import LeaveScreen from "./LeaveScreen";
 import { MeetingAppProvider } from "@/context";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
+import { useAuth } from "@/hooks";
 
 const Meeting = () => {
+  const { auth } = useAuth() ?? {};
   const { meetingId } = useParams();
   const [startMeeting, setStartMeeting] = useState<boolean>(false);
   const [webcamOn, setWebcamOn] = useState<boolean>(false);
@@ -31,7 +33,7 @@ const Meeting = () => {
               meetingId,
               micEnabled: micOn,
               webcamEnabled: webcamOn,
-              name: "Test Name",
+              name: auth?.first_name ?? "Test Name",
             }}
             token={authToken}
             reinitialiseMeetingOnConfigChange={true}
@@ -65,6 +67,7 @@ const Meeting = () => {
           setStartMeeting={setStartMeeting}
           setSelectedMic={setSelectedMic}
           setSelectedWebcam={setSelectedWebcam}
+          meetId={meetingId}
         />
       )}
     </div>
