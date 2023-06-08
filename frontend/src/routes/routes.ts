@@ -4,7 +4,11 @@ export const ROUTES = {
   blog: "/blog",
   specially: "/Specially",
   abbreviations: "/Abbreviations",
-  rooms: "/rooms",
+  rooms: {
+    default: "/rooms",
+    create: "/rooms/create",
+    modify: "/rooms/modify",
+  },
   auth: {
     login: "/auth/login",
     register: "/auth/register",

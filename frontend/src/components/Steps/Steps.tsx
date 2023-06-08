@@ -1,4 +1,5 @@
-import {  horario, teachers, money, plataforma } from "@/assets";
+import { horario, teachers, money, plataforma } from "@/assets";
+import "./Steps.css";
 
 const Steps = () => {
   const stepsData = [
@@ -23,35 +24,49 @@ const Steps = () => {
       image: plataforma,
     },
   ];
-  
-  return (
-    <div className="contenedorpadre" style={{
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
 
-      
-    }}>
-<div className="bg-cover bg-center min-h-64 pt-0">
-        <div className="flex flex-col items-center justify-center py-24 sm:py-32">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:max-w-6xl">
-            {stepsData.map((step, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-8">
-                <div className="text-center">
-                  <img src={step.image} alt={step.title} className="mx-auto w-32 h-32 rounded-full" />
-                </div>
-                <h2 className="mt-6 text-xl font-semibold text-indigo-600 text-center">{step.title}</h2>
-                <p className="mt-4 text-gray-600">{step.description}</p>
-              </div>
-            ))}
+  const stepsContainer = document.querySelector(".steps-container") as HTMLElement;
+  const stepCardImages = document.querySelectorAll(".step-card__img") as NodeListOf<HTMLElement>;
+  const stepCardBackgrounds = document.querySelectorAll(".step-card__bg") as NodeListOf<HTMLElement>;
+  const range = 40;
+
+  const calcValue = (a: number, b: number): string => ((a / b) * range - range / 2).toFixed(1);
+
+  let timeout: number;
+  document.addEventListener("mousemove", ({ x, y }) => {
+    if (timeout) {
+      window.cancelAnimationFrame(timeout);
+    }
+    timeout = window.requestAnimationFrame(() => {
+      const yValue = calcValue(y, window.innerHeight);
+      const xValue = calcValue(x, window.innerWidth);
+      stepsContainer.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`;
+
+      [].forEach.call(stepCardImages, (item: HTMLElement) => {
+        item.style.transform = `translateX(${-xValue}px) translateY(${yValue}px)`;
+      });
+
+      [].forEach.call(stepCardBackgrounds, (item: HTMLElement) => {
+        item.style.backgroundPosition = `${(Number(xValue) * 0.45).toFixed(1)}px ${(-yValue * 0.45).toFixed(1)}px`;
+      });
+    });
+  }, false);
+
+  return (
+    <main className="steps-container">
+      <h3>Benefits</h3>
+      <h1>Take your English to the next level </h1>
+      {stepsData.map((step, index) => (
+        <div className={`step-card step-card__${index + 1}`} key={index}>
+          <div className="step-card__bg"></div>
+          <img className="step-card__img" src={step.image} alt={step.title} />
+          <div className="step-card__text">
+            <p className="step-card__title">{step.title}</p>
           </div>
         </div>
-      </div>
-    </div>
-    
-
-    
+      ))}
+    </main>
   );
-            }
+};
 
 export default Steps;

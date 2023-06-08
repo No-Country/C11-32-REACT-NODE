@@ -12,7 +12,6 @@ type Token = {
   iat?: number;
 } & JwtPayload;
 
-
 const validateToken = async (req: Request, res: Response, next: NextFunction) => {
   const headerToken = req.headers["authorization"];
   if (headerToken != undefined && headerToken.startsWith("Bearer ")) {
@@ -24,8 +23,8 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
       //? Fetch user valid token
       const user = await Users.findByPk((token as Token)?.id);
       if (!user) {
-        res.status(404).json({ error: "User is not identified"});
-      } 
+        res.status(404).json({ error: "User is not identified" });
+      }
       console.log("desde AUTH Middleware: ", token);
       next();
     } catch (error) {
@@ -44,4 +43,3 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
 };
 
 export default validateToken;
-

@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes, memo, useId } from "react";
+import { FC, InputHTMLAttributes, useId } from "react";
 import { Controller, FieldValues, UseFormReturn } from "react-hook-form";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {

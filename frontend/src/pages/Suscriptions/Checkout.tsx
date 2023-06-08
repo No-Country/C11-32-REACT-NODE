@@ -17,7 +17,7 @@ const Checkout = () => {
   const { id = "" } = useParams();
   const [stepForm, setStepForm] = useState(0);
 
-  const { mutate, isLoading, isSuccess, error, isError, data } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: (data: Subscription) => addSubscription(data),
   });
 
