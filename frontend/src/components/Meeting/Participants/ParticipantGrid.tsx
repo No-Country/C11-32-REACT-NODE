@@ -1,0 +1,118 @@
+import React, { useEffect, useState } from "react";
+import ParticipantView from "./ParticipantView";
+// import { useMeetingAppContext } from "@/Context/MeetingAppContext";
+
+const MemoizedParticipant = React.memo(
+  ParticipantView,
+  (prevProps, nextProps) => {
+    return prevProps.participantId === nextProps.participantId;
+  }
+);
+
+function ParticipantGrid({ participantIds, isPresenting }) {
+  // const { sideBarMode } = useMeetingAppContext()!;
+  const sideBarMode = true;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const perRow =
+    isMobile || isPresenting
+      ? participantIds.length < 4
+        ? 1
+        : participantIds.length < 9
+        ? 2
+        : 3
+      : participantIds.length < 5
+      ? 2
+      : participantIds.length < 7
+      ? 3
+      : participantIds.length < 9
+      ? 4
+      : participantIds.length < 10
+      ? 3
+      : participantIds.length < 11
+      ? 4
+      : 4;
+
+  return (
+    <div
+      className={` m-3 flex flex-grow flex-col items-center justify-center md:flex-row ${
+        participantIds.length < 2 && !sideBarMode && !isPresenting
+          ? "md:px-16 md:py-2"
+          : participantIds.length < 3 && !sideBarMode && !isPresenting
+          ? "md:px-16 md:py-8"
+          : participantIds.length < 4 && !sideBarMode && !isPresenting
+          ? "md:px-16 md:py-4"
+          : participantIds.length > 4 && !sideBarMode && !isPresenting
+          ? "md:px-14"
+          : "md:px-0"
+      }`}
+    >
+      <div className=" flex h-full w-full flex-col">
+        {Array.from(
+          { length: Math.ceil(participantIds.length / perRow) },
+          (_, i) => {
+            return (
+              <div
+                key={`participant-${i}`}
+                className={`flex flex-1 ${
+                  isPresenting
+                    ? participantIds.length === 1
+                      ? "items-start justify-start"
+                      : "items-center justify-center"
+                    : "items-center justify-center"
+                }`}
+              >
+                {participantIds
+                  .slice(i * perRow, (i + 1) * perRow)
+                  .map((participantId) => {
+                    return (
+                      <div
+                        key={`participant_${participantId}`}
+                        className={`flex flex-1 ${
+                          isPresenting
+                            ? participantIds.length === 1
+                              ? "md:h-48 md:w-44 xl:h-48 xl:w-52 "
+                              : participantIds.length === 2
+                              ? "md:w-44 xl:w-56"
+                              : "md:w-44 xl:w-48"
+                            : "w-full"
+                        } h-full items-center justify-center ${
+                          participantIds.length === 1
+                            ? "md:max-w-7xl 2xl:max-w-[1480px] "
+                            : "md:max-w-lg 2xl:max-w-2xl"
+                        } overflow-hidden   p-1`}
+                      >
+                        <MemoizedParticipant participantId={participantId} />
+                      </div>
+                    );
+                  })}
+              </div>
+            );
+          }
+        )}
+      </div>
+    </div>
+  );
+}
+
+export const MemoizedParticipantGrid = React.memo(
+  ParticipantGrid,
+  (prevProps, nextProps) => {
+    return (
+      JSON.stringify(prevProps.participantIds) ===
+        JSON.stringify(nextProps.participantIds) &&
+      prevProps.isPresenting === nextProps.isPresenting
+    );
+  }
+);

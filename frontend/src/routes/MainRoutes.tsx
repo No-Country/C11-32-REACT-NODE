@@ -12,6 +12,7 @@ const RoadMap = lazy(() => import("@/pages/RoadMap/RoadMap"));
 const ContainerBlog = lazy(() => import("@/pages/Blog/ContainerBlog"));
 
 const Rooms = lazy(() => import("@/pages/Rooms/Rooms"));
+const Meeting = lazy(() => import("@/pages/Meeting/Meeting"));
 
 const Login = lazy(() => import("@/pages/Auth/Login"));
 const Register = lazy(() => import("@/pages/Auth/Register"));
@@ -23,6 +24,7 @@ const MainRoutes = () => {
     <RoutesWithNotFound>
       <Route path="/" element={<Home />} />
       <Route path={ROUTES.rooms.default} element={<Rooms />} />
+      <Route path={`${ROUTES.rooms.default}/:id`} element={<Meeting />} />
       <Route path={ROUTES.about} element={<About />} />
       <Route path={ROUTES.blog} element={<ContainerBlog />} />
       <Route path={ROUTES.auth.login} element={<Login />} />
