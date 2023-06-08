@@ -1,10 +1,11 @@
 import { logoNuevo } from "@/assets";
+import { ROUTES } from "@/routes";
 import { useNavigate } from "react-router-dom";
 
 const LeaveScreen = () => {
   const navigate = useNavigate();
   const handleReturnHome = () => {
-    navigate("/");
+    navigate(ROUTES.rooms.default, { replace: true });
   };
   return (
     <div

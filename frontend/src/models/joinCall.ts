@@ -1,4 +1,4 @@
-export interface JoinCall {
+export interface dataVideoCall {
   meet_id: string;
   user_id: string;
 }

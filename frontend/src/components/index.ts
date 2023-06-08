@@ -1,3 +1,4 @@
+export * from "./Badge";
 export { default as Benefits } from "./Benefits/Benefits";
 export { default as Card } from "./Card";
 export { default as Carousel } from "./Carousel/Carousel";

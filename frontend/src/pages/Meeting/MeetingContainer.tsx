@@ -5,6 +5,10 @@ import {
   SidebarContainer,
 } from "@/components";
 import MemorizedParticipantView from "@/components/Meeting/Participants/ParticipantsViewer";
+import { useAuth } from "@/hooks";
+import { dataVideoCall } from "@/models";
+import { leaveRoom } from "@/services";
+import { useMutation } from "@tanstack/react-query";
 
 import { useMeeting } from "@videosdk.live/react-sdk";
 import { useEffect, useRef } from "react";
@@ -16,6 +20,7 @@ interface Props {
   selectedWebcam: string;
   setIsMeetingLeft: (value: boolean) => void;
   onMeetingLeave: () => void;
+  participantData: dataVideoCall;
 }
 
 const MeetingContainer = ({
@@ -24,7 +29,13 @@ const MeetingContainer = ({
   selectedWebcam,
   webcamEnabled,
   onMeetingLeave,
+  participantData,
 }: Props) => {
+  const { auth } = useAuth() ?? {};
+  const { mutate } = useMutation({
+    mutationFn: (data: dataVideoCall) => leaveRoom(data, auth?.token),
+  });
+
   useEffect(() => {
     //JOIN API
   }, []);
@@ -44,7 +55,8 @@ const MeetingContainer = ({
   };
 
   const onMeetingLeft = () => {
-    //LEAVE API
+    console.log("desconecctaa");
+    mutate(participantData);
     onMeetingLeave();
   };
 

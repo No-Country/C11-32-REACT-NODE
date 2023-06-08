@@ -2,12 +2,14 @@ import { MENU_PROFILE } from "@/constants";
 import Avvvatars from "avvvatars-react";
 import { FC, useState } from "react";
 import { ProfileItem } from ".";
+import { BadgeDefault, BadgeSuccess } from "..";
 
 interface ProfileMenuProps {
   name: string;
+  hasSubscriptions: boolean;
 }
 
-const ProfileMenu: FC<ProfileMenuProps> = ({ name }) => {
+const ProfileMenu: FC<ProfileMenuProps> = ({ name, hasSubscriptions }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -38,7 +40,15 @@ const ProfileMenu: FC<ProfileMenuProps> = ({ name }) => {
       </button>
       {open && (
         <div className="z-full absolute left-1/2 mt-2 w-56  max-w-md -translate-x-1/2 transform ">
-          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+          <div className="overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+            <div className="flex justify-center gap-2 p-4">
+              plan:
+              {hasSubscriptions ? (
+                <BadgeSuccess name="Pro" />
+              ) : (
+                <BadgeDefault name="Free" />
+              )}
+            </div>
             {MENU_PROFILE.map(({ title: name, Icon, path }) => (
               <ProfileItem title={name} Icon={Icon} path={path} key={name} />
             ))}

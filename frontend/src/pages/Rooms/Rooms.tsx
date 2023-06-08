@@ -13,11 +13,13 @@ const Rooms = () => {
   if (isLoading) return <ScreenLoader />;
 
   return (
-    <main className="container mx-auto">
+    <main className="container mx-auto pt-8">
       <Link to={ROUTES.rooms.create}>
-        <Button>Create room</Button>
+        <Button className="mb-8 w-max">Create room</Button>
       </Link>
-      <div>{isSuccess && data.map((room) => <RoomCard data={room} />)}</div>
+      <div className="grid-cards">
+        {isSuccess && data.map((room) => <RoomCard data={room} />)}
+      </div>
     </main>
   );
 };
