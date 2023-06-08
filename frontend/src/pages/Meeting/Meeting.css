@@ -52,3 +52,8 @@
     background-color: #FF4C00;
     color: white;
 }
+
+.video-cover video {
+    position: absolute;
+    object-fit: cover;
+}

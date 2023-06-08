@@ -17,15 +17,13 @@ import Parallax from "parallax-js";
 const Countries: React.FC = () => {
   useEffect(() => {
     const scene = document.getElementById("scene");
-    const text = document.getElementById("text");
     const parallaxInstanceScene = new Parallax(scene);
-    const parallaxInstanceText = new Parallax(text);
 
     parallaxInstanceScene.friction(0.2, 0.2);
   }, []);
 
   return (
-    <section className="banner full-width">
+    <section className="banner max-w-full overflow-hidden">
       <div className="container">
         <div id="scene">
           <h2 id="text">
