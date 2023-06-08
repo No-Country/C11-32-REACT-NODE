@@ -1,4 +1,3 @@
-import { logo } from "@/assets";
 import { Button, Form, Input } from "@/components";
 import { initialFormLogin } from "@/constants";
 import { useAuth, useToastMessage } from "@/hooks";
