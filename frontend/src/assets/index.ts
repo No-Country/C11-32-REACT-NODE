@@ -17,7 +17,6 @@ import iran from "./iran.webp";
 
 import france from "./france.webp";
 
-
 import spain from "./spain.webp";
 
 import turkey from "./turkey.webp";
@@ -43,6 +42,28 @@ import discount from "./Discount.svg";
 import robot from "./robot.png";
 import hero from "./hero.webp";
 import chat from "./chat.png"
+
+import MicOff from "./Meeting/MicOff";
+import MicOn from "./Meeting/MicOn";
+import VideoCamOff from "./Meeting/VideoCamOff";
+import VideoCamOn from "./Meeting/VideoCamOn";
+import Check from "./Meeting/BottomBar/Check";
+import Close from "./Meeting/Close";
+import Arrow from "./Meeting/BottomBar/Arrow";
+import Send from "./Meeting/Send";
+import End from "./Meeting/BottomBar/End";
+import Chat from "./Meeting/BottomBar/Chat";
+import Participatns from "./Meeting/BottomBar/Participatns";
+import ScreenShare from "./Meeting/BottomBar/ScreenShare";
+import MicOffBar from "./Meeting/BottomBar/MicOffBar";
+import MicOnBar from "./Meeting/BottomBar/MicOnBar";
+import WebCamOnBar from "./Meeting/BottomBar/WebCamOnBar";
+import WebCamOffBar from "./Meeting/BottomBar/WebCamOffBar";
+import Info from "./Meeting/BottomBar/Info";
+import Clipboard from "./Meeting/BottomBar/Clipboard";
+import Dots from "./Meeting/BottomBar/Dots";
+import logoNuevo from "../assets/logonuevo.png";
+import CheckCircle from "./Meeting/CheckCircle";
 
 export {
   arrowup,
@@ -79,4 +100,25 @@ export {
   personRegister,
   UserIc,
   ExitIc,
+  MicOff,
+  MicOn,
+  VideoCamOn,
+  VideoCamOff,
+  Check,
+  Close,
+  Arrow,
+  Send,
+  End,
+  Chat,
+  Participatns,
+  ScreenShare,
+  MicOffBar,
+  MicOnBar,
+  WebCamOffBar,
+  WebCamOnBar,
+  Info,
+  Clipboard,
+  Dots,
+  logoNuevo,
+  CheckCircle,
 };

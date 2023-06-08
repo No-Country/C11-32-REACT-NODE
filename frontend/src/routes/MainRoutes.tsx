@@ -10,9 +10,11 @@ const Home = lazy(() => import("@/pages/Home/Home"));
 const RoadMap = lazy(() => import("@/pages/RoadMap/RoadMap"));
 const ContainerBlog = lazy(() => import("@/pages/Blog/ContainerBlog"));
 const FAQ = lazy(() => import("@/pages/FAQ/FAQ"));
-const VideoCalling = lazy(() => import("@/pages/VideoCalling/VideoCalling"));
 
 const Rooms = lazy(() => import("@/pages/Rooms/Rooms"));
+
+const Meeting = lazy(() => import("@/pages/Meeting/Meeting"));
+
 const CreateRoom = lazy(() => import("@/pages/Rooms/CreateRoom"));
 
 const Login = lazy(() => import("@/pages/Auth/Login"));
@@ -25,6 +27,7 @@ const MainRoutes = () => {
     <RoutesWithNotFound>
       <Route path="/" element={<Home />} />
       <Route path={ROUTES.rooms.default} element={<Rooms />} />
+      <Route path={`${ROUTES.rooms.default}/:id`} element={<Meeting />} />
       <Route path={ROUTES.about} element={<About />} />
       <Route path={ROUTES.blog} element={<ContainerBlog />} />
       <Route path={ROUTES.FAQ} element={<FAQ />} />
@@ -48,7 +51,6 @@ const MainRoutes = () => {
         <Route path={ROUTES.roadMap} element={<RoadMap />} />
         <Route path={ROUTES.rooms.create} element={<CreateRoom />} />
         <Route path={`${ROUTES.auth.logout}`} element={<Logout />} />
-
       </Route>
     </RoutesWithNotFound>
   );
