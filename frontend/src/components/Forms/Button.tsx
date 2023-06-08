@@ -1,5 +1,6 @@
 import { Spin } from "@/assets";
 import { FC, ButtonHTMLAttributes, ReactNode } from "react";
+import "../../pages/Auth/Login.css"
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -11,7 +12,7 @@ const Button: FC<Props> = ({ children, className, isLoading, ...rest }) => {
   return (
     <button
       className={
-        "flex w-full items-center justify-center gap-1 rounded-md bg-indigo-500 px-4 py-2 text-sm font-bold text-white transition duration-300 hover:bg-indigo-600 disabled:opacity-70 disabled:hover:bg-indigo-500 " +
+        "login__button login__button-ghost " +
         className
       }
       {...rest}

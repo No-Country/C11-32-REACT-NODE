@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import PersonalnfoForm from "../Suscriptions/CheckoutPersonalnfo";
+import "./Login.css"
 
 const Register = () => {
   const { mutate, isLoading, isSuccess, error, data } = useMutation({
@@ -41,25 +42,30 @@ const Register = () => {
   }, [isSuccess, data]);
 
   return (
-    <main className=" container mx-auto p-4">
+    <main className="container ">
+            <div className="login__content">
+            <img src="https://i.ibb.co/ChRBkx3/fd23a522d40a7049200c9b6383fa51d2.jpg" alt="login image" className="login__img"/>
+
       <h1 className="my-8 text-center text-4xl  font-semibold">
-        Sign up to SpeakUp
+        
       </h1>
-      <div className="flex flex-col items-center justify-center gap-4 md:flex-row-reverse md:px-8 lg:px-32">
-        <img
-          src={personRegister}
-          alt="person with glass"
-          className="mx-auto w-[40%] md:w-[30%]"
-          loading="lazy"
-        />
-        <Card className=" h-max w-full max-w-4xl pb-8 sm:w-[45rem]">
+        
           <Form methods={methods} onSubmit={handleSubmit}>
+          <div>
+             <h1 className="login__title"> <span>Sign up to </span> SpeakUp </h1>
+             </div>
+            <div>
+            <div className="login__inputs">
             <PersonalnfoForm />
-            <Button isLoading={isLoading} className="mx-auto w-max">
+            </div>
+           
+            <div className="login__buttons">
+            <Button isLoading={isLoading} className="login__button-ghost">
               Sign up
             </Button>
+            </div>
+            </div>
           </Form>
-        </Card>
       </div>
     </main>
   );
