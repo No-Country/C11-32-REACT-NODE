@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import { ROUTES } from ".";
 import { RoutesWithAuth, RoutesWithNotFound } from "@/components";
 import Specially from "@/pages/Clases/Specially";
@@ -13,6 +13,8 @@ const ContainerBlog = lazy(() => import("@/pages/Blog/ContainerBlog"));
 const FAQ = lazy(() => import("@/pages/FAQ/FAQ"));
 const VideoCalling = lazy(() => import("@/pages/VideoCalling/VideoCalling"));
 
+const Rooms = lazy(() => import("@/pages/Rooms/Rooms"));
+
 const Login = lazy(() => import("@/pages/Auth/Login"));
 const Register = lazy(() => import("@/pages/Auth/Register"));
 const PricingPlans = lazy(() => import("@/pages/Suscriptions/PricingPlans"));
@@ -22,7 +24,7 @@ const MainRoutes = () => {
   return (
     <RoutesWithNotFound>
       <Route path="/" element={<Home />} />
-      <Route path={ROUTES.rooms} element={<VideoCalling />} />
+      <Route path={ROUTES.rooms.default} element={<Rooms />} />
       <Route path={ROUTES.about} element={<About />} />
       <Route path={ROUTES.blog} element={<ContainerBlog />} />
       <Route path={ROUTES.FAQ} element={<FAQ />} />

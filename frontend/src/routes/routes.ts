@@ -6,6 +6,11 @@ export const ROUTES = {
   abbreviations: "/Abbreviations",
   rooms: "/rooms",
   FAQ:"/FAQ",
+  rooms: {
+    default: "/rooms",
+    create: "/rooms/create",
+    modify: "/rooms/modify",
+  },
   auth: {
     login: "/auth/login",
     register: "/auth/register",

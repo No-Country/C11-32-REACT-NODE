@@ -8,7 +8,6 @@ export { default as Feature } from "./Feature/Feature";
 export * from "./Forms/container";
 export * from "./Forms";
 export * from "./Forms/memo";
-export * from "./Invitacion/Invitacion";
 export { default as Banner } from "./MainBanner/Banner";
 export * from "./NavBar";
 export * from "./PaymentMethod";

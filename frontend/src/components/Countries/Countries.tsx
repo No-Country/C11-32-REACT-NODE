@@ -14,7 +14,7 @@ const Countries: React.FC = () => {
   }, []);
 
   return (
-    <section className="banner">
+    <section className="banner full-width">
       <div className="container">
         <div id="scene">
           <h2 id="text">
@@ -48,13 +48,13 @@ const Countries: React.FC = () => {
             <img src={italy} alt="Italy" style={{ position: "absolute", top: "70%", left: "70%" }} />
           </div>
           <div className="layer z" data-depth="0.9">
-            <img src={india} alt="Italy" style={{ position: "absolute", top: "70%", left: "70%" }} />
+            <img src={india} alt="India" style={{ position: "absolute", top: "70%", left: "20%" }} />
           </div>
-          <div className="layer z" data-depth="0.9">
-            <img src={iran} alt="Italy" style={{ position: "absolute", top: "70%", left: "70%" }} />
+          <div className="layer z" data-depth="0.3">
+            <img src={iran} alt="Iran" style={{ position: "absolute", top: "70%", left: "60%" }} />
           </div>
-          <div className="layer z" data-depth="0.9">
-            <img src={spain} alt="Italy" style={{ position: "absolute", top: "70%", left: "70%" }} />
+          <div className="layer z" data-depth="0.7">
+            <img src={spain} alt="Spain" style={{ position: "absolute", top: "70%", left: "90%" }} />
           </div>
         </div>
       </div>

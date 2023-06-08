@@ -1,5 +1,5 @@
-import React from 'react';
-import "./FAQ.css"
+import React from "react";
+import "./FAQ.css";
 
 interface FAQItem {
   question: string;
@@ -9,25 +9,27 @@ interface FAQItem {
 const FAQ: React.FC = () => {
   const faqs: FAQItem[] = [
     {
-      question: 'What is the Conversation Meeting?',
-      answer: 'It`s an online meeting within a group of several people. We`re joined by those who want to communicate in English and develop speaking skills.',
+      question: "What is the Conversation Meeting?",
+      answer:
+        "It`s an online meeting within a group of several people. We`re joined by those who want to communicate in English and develop speaking skills.",
     },
     {
-      question: 'How can I join the session?',
-      answer: 'Go to Rooms, complete the form, and join the session.',
+      question: "How can I join the session?",
+      answer: "Go to Rooms, complete the form, and join the session.",
     },
     {
-      question: 'What level of English is required to join a Speak Up session?',
-      answer: 'You can choose your level: Basic, Intermediate, and Advanced.',
+      question: "What level of English is required to join a Speak Up session?",
+      answer: "You can choose your level: Basic, Intermediate, and Advanced.",
     },
     {
-      question: 'I would like to host a session by myself. What should I do?',
-      answer: 'Just create the room, go to Rooms, and complete the form.',
+      question: "I would like to host a session by myself. What should I do?",
+      answer: "Just create the room, go to Rooms, and complete the form.",
     },
     {
-      question: 'Are there any native speakers in the sessions?',
-      answer: 'You can find people from different countries, so YES, you can practice with native speakers.',
-    }
+      question: "Are there any native speakers in the sessions?",
+      answer:
+        "You can find people from different countries, so YES, you can practice with native speakers.",
+    },
   ];
 
   return (
