@@ -9,7 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import "./Login.css"
 const Login = () => {
   const { setAuthToken } = useAuth() ?? {};
 
@@ -40,46 +40,48 @@ const Login = () => {
   }, [isSuccess, data]);
 
   return (
-    <main className="container mx-auto p-4">
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
-          </h2>
-        </div>
+    <main className="container ">
+      <div className="login__content">
+      <img src="https://i.ibb.co/ChRBkx3/fd23a522d40a7049200c9b6383fa51d2.jpg" alt="login image" className="login__img"/>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <Form methods={methods} onSubmit={handleSubmit}>
-            <Input
-              name="email"
-              label="Email address"
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-            <Input
-              name="password"
-              label="Password"
-              type="password"
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-            <Button
-              isLoading={isLoading}
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign in
-            </Button>
+       
+          <Form methods={methods} onSubmit={handleSubmit} >
+             <div>
+             <h1 className="login__title"> <span>Welcome</span> Back </h1>
+             <p className="login__description">Welcome! Please login to continue. </p>
+             </div>
+            <div>
+                  <div className="login__inputs">
+                  <Input
+                    name="email"
+                    label="Email address"
+                    className="login__input"
+                  />
+                  <Input
+                    name="password"
+                    label="Password"
+                    type="password"
+                    className="login__input "                  />
+                  </div>
+                 <div className="login__buttons">
+                 <Button
+                    isLoading={isLoading}
+                   
+                  >
+                    Sign in
+                  </Button>
+                  <Button
+                    isLoading={isLoading}
+                    className="login__button-ghost " 
+                  >
+                    Sign Up
+                  </Button>
+                 </div>
+                 <a href="#" className="login__forgot">Forgot Password?</a>
+            </div>
           </Form>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Start for free
-            </a>
-          </p>
-        </div>
+       
       </div>
     </main>
   );

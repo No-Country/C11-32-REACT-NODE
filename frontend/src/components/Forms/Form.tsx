@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import "../../pages/Auth/Login.css"
 import {
   FieldValues,
   FormProvider,
@@ -14,7 +15,7 @@ interface FormProps {
 const Form: FC<FormProps> = ({ methods, onSubmit, children, ...props }) => {
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} {...props}>
+      <form className="login__form" onSubmit={methods.handleSubmit(onSubmit)} {...props}>
         {children}
       </form>
     </FormProvider>
