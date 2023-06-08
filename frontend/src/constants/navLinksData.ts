@@ -18,6 +18,10 @@ const navLinks: NavLinkItem[] = [
     path: ROUTES.rooms.default,
   },
   {
+    title: "FAQ's",
+    path: ROUTES.FAQ,
+  },
+  {
     title: "RoadMap",
     path: ROUTES.roadMap,
   },

@@ -16,24 +16,24 @@ class Participants extends Model {
     type: DataType.UUID,
     defaultValue: DataType.UUIDV4,
   })
-  id!: string;
+    id!: string;
 
   @Column({ type: DataType.BOOLEAN, defaultValue: true })
-  is_active!: boolean;
+    is_active!: boolean;
 
   @ForeignKey(() => Rooms)
   @Column({ type: DataType.UUID })
-  room_id!: string;
+    room_id!: string;
 
   @ForeignKey(() => Users)
   @Column({ type: DataType.UUID })
-  user_id!: string;
+    user_id!: string;
 
   @BelongsTo(() => Rooms)
-  room!: Rooms;
+    room!: Rooms;
 
   @BelongsTo(() => Users)
-  user!: Users;
+    user!: Users;
 }
 
 export default Participants;

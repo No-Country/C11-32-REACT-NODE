@@ -1,4 +1,4 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, HasMany, Model, NotEmpty, Table } from "sequelize-typescript";
+import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, NotEmpty, Table } from "sequelize-typescript";
 import Profiles from "./Profile.model";
 import Memberships from "./Membership.model";
 

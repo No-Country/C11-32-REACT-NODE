@@ -1,4 +1,5 @@
 export * from "./data";
+export * from "./rooms";
 export * from "./formSteps";
 export * from "./initialForms";
 export * from "./menuProfile";

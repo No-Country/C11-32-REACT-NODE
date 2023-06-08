@@ -4,6 +4,8 @@ export const ROUTES = {
   blog: "/blog",
   specially: "/Specially",
   abbreviations: "/Abbreviations",
+  rooms: "/rooms",
+  FAQ:"/FAQ",
   rooms: {
     default: "/rooms",
     create: "/rooms/create",

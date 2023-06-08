@@ -34,22 +34,22 @@ const ContainerBlog = () => {
       <div className="slider-container" style={{ marginBottom: '20px' }}>
         <Slider {...settings}>
           <div>
-            <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
+            <img src="https://i.ibb.co/hyhB2SR/PROFICIENCY-WEB.png" alt="Imagen 1" />
           </div>
           <div>
-          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
+          <img src="https://i.ibb.co/hyhB2SR/PROFICIENCY-WEB.png" alt="Imagen 1" />
           </div>
           <div>
-          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
+          <img src="https://i.ibb.co/hyhB2SR/PROFICIENCY-WEB.png" alt="Imagen 1" />
           </div>
           <div>
-          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
+          <img src="https://i.ibb.co/hyhB2SR/PROFICIENCY-WEB.png" alt="Imagen 1" />
           </div>
           <div>
-          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
+          <img src="https://i.ibb.co/hyhB2SR/PROFICIENCY-WEB.png" alt="Imagen 1" />
           </div>
           <div>
-          <img src="https://i.ibb.co/55ZcWR2/122702894-117660583450796-5954383698265102812-n.png" alt="Imagen 1" />
+          <img src="https://i.ibb.co/hyhB2SR/PROFICIENCY-WEB.png" alt="Imagen 1" />
           </div>
           {/* Agrega más elementos <div> con las imágenes deseadas */}
         </Slider>

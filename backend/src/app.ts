@@ -7,13 +7,13 @@ import DBInit from "./db";
 import { errorHandler } from "./middlewares";
 const { PORT } = CONFIG;
 
-DBInit()
-  .then(() => {
-    console.log("Database conected");
-  })
-  .catch(() => {
-    console.log("Database not conected");
-  });
+// DBInit()
+//   .then(() => {
+//     console.log("Database conected");
+//   })
+//   .catch(() => {
+//     console.log("Database not conected");
+//   });
 
 const app = express();
 app.use(express.json());

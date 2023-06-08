@@ -3,7 +3,7 @@ export { default as Card } from "./Card";
 export { default as Carousel } from "./Carousel/Carousel";
 export { default as Countries } from "./Countries/Countries";
 export * from "./DebitCard";
-export { default as FAQ } from "./FAQ/FAQ";
+export { default as FAQ } from "../pages/FAQ/FAQ";
 export { default as Feature } from "./Feature/Feature";
 export * from "./Forms/container";
 export * from "./Forms";

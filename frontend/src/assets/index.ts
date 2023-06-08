@@ -37,6 +37,11 @@ import PointsCardBg from "./PointsCardBg";
 import CheckIc from "./CheckIc";
 import UserIc from "./UserIc";
 import ExitIc from "./ExitIc";
+import arrowup from "./arrow-up.svg";
+import discount from "./Discount.svg";
+import robot from "./robot.png";
+import hero from "./hero.webp";
+import chat from "./chat.png"
 
 import MicOff from "./Meeting/MicOff";
 import MicOn from "./Meeting/MicOn";
@@ -61,6 +66,11 @@ import logoNuevo from "../assets/logonuevo.png";
 import CheckCircle from "./Meeting/CheckCircle";
 
 export {
+  arrowup,
+  chat,
+  discount,
+  robot,
+  hero,
   india,
   japan,
   germany,
