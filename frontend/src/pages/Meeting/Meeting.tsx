@@ -5,10 +5,11 @@ import MeetingContainer from "./MeetingContainer";
 import MeetingDetailScreen from "./MeetingDetailScreen";
 import LeaveScreen from "./LeaveScreen";
 import { MeetingAppProvider } from "@/context";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 const Meeting = () => {
-  // const { id: meetingId } = useParams();
+  const { meetingId } = useParams();
   const [startMeeting, setStartMeeting] = useState<boolean>(false);
   const [webcamOn, setWebcamOn] = useState<boolean>(false);
   const [micOn, setMicOn] = useState<boolean>(false);
@@ -16,7 +17,10 @@ const Meeting = () => {
   const [selectedWebcam, setSelectedWebcam] = useState<string>("");
   const [isMeetingLeft, setIsMeetingLeft] = useState(false);
 
-  const meetingId = "us6a-kqb2-4z6c";
+  if (!meetingId) {
+    toast.error("id is required to join the call");
+    return null;
+  }
 
   return (
     <div>

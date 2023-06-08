@@ -8,6 +8,7 @@ import {
   logoNuevo,
 } from "@/assets";
 import { SettingBox } from "@/components";
+import { toast } from "sonner";
 
 interface Device {
   deviceId: string;
@@ -40,7 +41,7 @@ const MeetingDetailScreen = ({
   const [mics, setMics] = useState<Device[]>([]);
   const [webcams, setWebcams] = useState<Device[]>([]);
   const [settingDialogueOpen, setSettingDialogueOpen] =
-    useState<Boolean>(false);
+    useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
@@ -65,8 +66,8 @@ const MeetingDetailScreen = ({
         if (webcamList.length > 0) {
           setSelectedWebcam(webcamList[0].deviceId);
         }
-      } catch (error) {
-        console.error("Failed to get media devices:", error);
+      } catch (err) {
+        toast.error("Failed to get media devices:");
       }
     };
 
@@ -99,7 +100,7 @@ const MeetingDetailScreen = ({
           }
         }
       } catch (error) {
-        console.error("Failed to access camera:", error);
+        toast.error("Failed to access camera:");
       }
     };
 
@@ -123,7 +124,7 @@ const MeetingDetailScreen = ({
           streamRef.current.addTrack(newAudioTrack);
         }
       } catch (error) {
-        console.error("Failed to change audio input device:", error);
+        toast.error("Failed to change audio input device:");
       }
     };
 
@@ -147,6 +148,7 @@ const MeetingDetailScreen = ({
           setMicOn(true);
         })
         .catch((error) => {
+          toast.error("Failed to access microphone:");
           console.error("Failed to access microphone:", error);
         });
     }
@@ -168,8 +170,8 @@ const MeetingDetailScreen = ({
           streamRef.current = stream;
           setWebcamOn(true);
         })
-        .catch((error) => {
-          console.error("Failed to access camera:", error);
+        .catch(() => {
+          toast.error("Failed to access camera:");
         });
     }
   };
