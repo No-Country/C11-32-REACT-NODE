@@ -41,11 +41,17 @@ export default class ParticipantsService {
     }
   }
 
-  static async leaveRoom(room_id: string, user_id: string): Promise<void> {
+  static async leaveRoom(meet_id: string, user_id: string): Promise<void> {
     const transaction = await sequelize.transaction();
     try {
+      const room = await Rooms.findOne({ where: { meet_id }, transaction });
+
+      if (!room) {
+        throw new CustomError("The room does not exist.", 404, "Not Found Error");
+      }
+
       const participant = await Participants.findOne({
-        where: { room_id, user_id },
+        where: { room_id: room.id, user_id },
         transaction,
       });
 
@@ -53,20 +59,14 @@ export default class ParticipantsService {
         throw new CustomError("The participant does not exist.", 404, "Not Found Error");
       }
 
-      await Participants.update({ is_active: false }, { where: { room_id, user_id }, transaction });
-
-      const room = await Rooms.findByPk(room_id, { transaction });
-
-      if (!room) {
-        throw new CustomError("The room does not exist.", 404, "Not Found Error");
-      }
+      await Participants.update({ is_active: false }, { where: { room_id: room.id, user_id }, transaction });
 
       const activeParticipants = room.current_participants - 1;
 
-      await Rooms.update({ current_participants: activeParticipants }, { where: { id: room_id }, transaction });
+      await Rooms.update({ current_participants: activeParticipants }, { where: { id: room.id }, transaction });
 
       if (activeParticipants === 0) {
-        await Rooms.update({ status: "inactive" }, { where: { id: room_id }, transaction });
+        await Rooms.update({ status: "inactive" }, { where: { id: room.id }, transaction });
       }
 
       await transaction.commit();
