@@ -1,5 +1,4 @@
 import React from 'react';
-import { faq } from "@/assets";
 import "./FAQ.css"
 
 interface FAQItem {
@@ -32,7 +31,8 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <section className="faq-container">
+    <>
+<section className="faq-container">
       <h1>Preguntas frecuentes</h1>
       {faqs.map((faq, index) => (
         <div className="faq-tab" key={index}>
@@ -47,6 +47,7 @@ const FAQ: React.FC = () => {
         </div>
       ))}
     </section>
+    </>
   );
 };
 

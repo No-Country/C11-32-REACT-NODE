@@ -14,6 +14,10 @@ const navLinks = [
     path: ROUTES.rooms,
   },
   {
+    title: "FAQ's",
+    path: ROUTES.FAQ,
+  },
+  {
     title: "RoadMap",
     path: ROUTES.roadMap,
   },

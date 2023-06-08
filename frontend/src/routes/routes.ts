@@ -5,6 +5,7 @@ export const ROUTES = {
   specially: "/Specially",
   abbreviations: "/Abbreviations",
   rooms: "/rooms",
+  FAQ:"/FAQ",
   auth: {
     login: "/auth/login",
     register: "/auth/register",

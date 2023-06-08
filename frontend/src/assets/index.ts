@@ -38,8 +38,14 @@ import PointsCardBg from "./PointsCardBg";
 import CheckIc from "./CheckIc";
 import UserIc from "./UserIc";
 import ExitIc from "./ExitIc";
+import arrowup from "./arrow-up.svg";
+import discount from "./Discount.svg";
+import robot from "./robot.png";
 
 export {
+  arrowup,
+  discount,
+  robot,
   india,
   japan,
   germany,

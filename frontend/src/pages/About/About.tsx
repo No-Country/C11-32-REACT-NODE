@@ -23,6 +23,7 @@ const About: React.FC = () => {
   ];
 
   return (
+   <>
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
         <div className="max-w-2xl">
@@ -47,6 +48,7 @@ const About: React.FC = () => {
         </ul>
       </div>
     </div>
+   </>
   );
 };
 
