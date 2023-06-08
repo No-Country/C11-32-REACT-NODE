@@ -92,8 +92,7 @@ const Steps = () => {
       className="steps-container"
       ref={stepsContainerRef}
     >
-      <h3>Benefits</h3>
-      <h1>take your english to the next level</h1>
+      <h1>Benefits</h1>
       {stepsData.map((step, index) => (
         <div className={`step-card step-card__${index + 1}`} key={index}>
           <div className="step-card__bg"></div>
