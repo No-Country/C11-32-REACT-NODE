@@ -7,8 +7,16 @@ import { initialFormRoom } from "@/constants";
 import { useMutation } from "@tanstack/react-query";
 import { createRoom } from "@/services";
 import { useAuth, useToastMessage } from "@/hooks";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "@/routes";
+
+interface Data {
+  meet_id: string;
+}
 
 const CreateRoom = () => {
+  const navigate = useNavigate();
   const { auth } = useAuth() ?? {};
 
   const { mutate, isLoading, error, data } = useMutation({
@@ -20,6 +28,13 @@ const CreateRoom = () => {
     mode: "all",
     criteriaMode: "all",
   });
+
+  useEffect(() => {
+    if (!data) return;
+
+    const { meet_id } = data as Data;
+    navigate(`${ROUTES.rooms.join}/${meet_id}`);
+  }, [data]);
 
   useToastMessage({
     errors: [error],

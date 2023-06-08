@@ -4,12 +4,12 @@ export const ROUTES = {
   blog: "/blog",
   specially: "/Specially",
   abbreviations: "/Abbreviations",
-  rooms: "/rooms",
-  FAQ:"/FAQ",
+  FAQ: "/FAQ",
   rooms: {
     default: "/rooms",
     create: "/rooms/create",
     modify: "/rooms/modify",
+    join: "/rooms/join",
   },
   auth: {
     login: "/auth/login",
