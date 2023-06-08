@@ -33,9 +33,9 @@ export async function joinRoom(request: Request, response: Response, next: NextF
 }
 
 export async function leaveRoom(request: Request, response: Response, next: NextFunction) {
-  const { room_id, user_id } = request.body;
+  const { meet_id, user_id } = request.body;
   try {
-    await ParticipantsService.leaveRoom(room_id, user_id);
+    await ParticipantsService.leaveRoom(meet_id, user_id);
     return response.sendStatus(204);
   } catch (error) {
     next(error);
