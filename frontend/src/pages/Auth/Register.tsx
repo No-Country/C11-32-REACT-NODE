@@ -1,5 +1,4 @@
-import { personRegister } from "@/assets";
-import { Button, Card, Form } from "@/components";
+import { Button, Form } from "@/components";
 import { initialFormUser } from "@/constants";
 import { useToastMessage } from "@/hooks";
 import { User, userSchema } from "@/schemas";
@@ -10,7 +9,7 @@ import { useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import PersonalnfoForm from "../Suscriptions/CheckoutPersonalnfo";
-import "./Login.css"
+import "./Login.css";
 
 const Register = () => {
   const { mutate, isLoading, isSuccess, error, data } = useMutation({
@@ -43,29 +42,34 @@ const Register = () => {
 
   return (
     <main className="container ">
-            <div className="login__content">
-            <img src="https://i.ibb.co/ChRBkx3/fd23a522d40a7049200c9b6383fa51d2.jpg" alt="login image" className="login__img"/>
+      <div className="login__content">
+        <img
+          src="https://i.ibb.co/ChRBkx3/fd23a522d40a7049200c9b6383fa51d2.jpg"
+          alt="login image"
+          className="login__img"
+        />
 
-      <h1 className="my-8 text-center text-4xl  font-semibold">
-        
-      </h1>
-        
-          <Form methods={methods} onSubmit={handleSubmit}>
+        <h1 className="my-8 text-center text-4xl  font-semibold"></h1>
+
+        <Form methods={methods} onSubmit={handleSubmit}>
           <div>
-             <h1 className="login__title"> <span>Sign up to </span> SpeakUp </h1>
-             </div>
-            <div>
+            <h1 className="login__title">
+              {" "}
+              <span>Sign up to </span> SpeakUp{" "}
+            </h1>
+          </div>
+          <div>
             <div className="login__inputs">
-            <PersonalnfoForm />
+              <PersonalnfoForm />
             </div>
-           
+
             <div className="login__buttons">
-            <Button isLoading={isLoading} className="login__button-ghost">
-              Sign up
-            </Button>
+              <Button isLoading={isLoading} className="login__button-ghost">
+                Sign up
+              </Button>
             </div>
-            </div>
-          </Form>
+          </div>
+        </Form>
       </div>
     </main>
   );

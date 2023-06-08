@@ -23,12 +23,12 @@ export const createRoom = async (data: Room, token = "") => {
   return response.data;
 };
 
-export const roomsList = async () => {
-  const response = await Axios.get<RoomI[]>(URL_ROOMS.default);
+export const roomsList = async (): Promise<RoomI[]> => {
+  const response = await Axios.get<Data>(URL_ROOMS.default);
 
   if (response?.status !== 200) throw response.data;
   const responseData = response.data as Data;
-  return responseData.data;
+  return responseData.data as RoomI[];
 };
 
 export const joinRoom = async (data: dataVideoCall, token = "") => {
