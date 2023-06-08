@@ -20,6 +20,8 @@ export async function newSubscription(req: Request, res: Response, next: NextFun
       expand: ["latest_invoice.payment_intent"],
     });
 
+    //crear user
+
     res.status(200).json({ suscripcion: subscription });
   } catch (error) {
     next(error);

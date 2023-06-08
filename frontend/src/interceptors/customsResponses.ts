@@ -13,7 +13,6 @@ export const onResponseError = (error: AxiosError) => {
     throw new Error(response);
   }
   if (typeof response === "object") {
-    console.log("TCL: onResponseError -> response", response);
     const errorMesage = response as message;
     throw new Error(errorMesage.message);
   }

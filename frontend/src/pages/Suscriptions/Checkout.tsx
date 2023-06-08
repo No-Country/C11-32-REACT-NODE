@@ -29,7 +29,6 @@ const Checkout = () => {
   });
   const hasErrorForm = Object.keys(methods.formState.errors).length === 0;
 
-  console.log(methods.formState.errors);
   const handleClickPrev = (): void => {
     if (stepForm > 0) {
       setStepForm(stepForm - 1);

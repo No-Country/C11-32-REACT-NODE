@@ -1,29 +1,31 @@
-import { personLogin } from "@/assets";
-import { Button, Card, Form, Input } from "@/components";
-import { initialFormLogin } from "@/constants";
-import { useAuth, useToastMessage } from "@/hooks";
-import { Login, loginSchema } from "@/schemas";
-import { loginUser } from "@/services";
+import { personRegister } from "@/assets";
+import { Button, Card, Form } from "@/components";
+import { initialFormUser } from "@/constants";
+import { useToastMessage } from "@/hooks";
+import { User, userSchema } from "@/schemas";
+import { signupUser } from "@/services";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
+import PersonalnfoForm from "../Suscriptions/CheckoutPersonalnfo";
 
-const Login = () => {
-  const { setAuthToken } = useAuth() ?? {};
-
+const Register = () => {
   const { mutate, isLoading, isSuccess, error, data } = useMutation({
-    mutationFn: (data: Login) => loginUser(data),
+    mutationFn: (data: User) => signupUser(data),
   });
+
   const navigate = useNavigate();
   const location = useLocation();
+
   const methods = useForm<FieldValues>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: initialFormLogin,
+    resolver: zodResolver(userSchema),
+    defaultValues: initialFormUser,
     mode: "all",
     criteriaMode: "all",
   });
+
   useToastMessage({
     errors: [error],
   });
@@ -34,27 +36,28 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (!isSuccess || !setAuthToken) return;
-    setAuthToken(data);
+    if (!isSuccess) return;
     navigate(from, { replace: true });
   }, [isSuccess, data]);
 
   return (
     <main className=" container mx-auto p-4">
       <h1 className="my-8 text-center text-4xl  font-semibold">
-        Log in to your account
+        Sign up to SpeakUp
       </h1>
-      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row-reverse md:px-8 lg:px-32">
+      <div className="flex flex-col items-center justify-center gap-4 md:flex-row-reverse md:px-8 lg:px-32">
         <img
-          src={personLogin}
+          src={personRegister}
           alt="person with glass"
           className="mx-auto w-[40%] md:w-[30%]"
+          loading="lazy"
         />
-        <Card className=" h-max w-full max-w-2xl pb-8 sm:w-[37.5rem]">
+        <Card className=" h-max w-full max-w-4xl pb-8 sm:w-[45rem]">
           <Form methods={methods} onSubmit={handleSubmit}>
-            <Input name="email" label="Email" />
-            <Input name="password" label="Password" type="password" />
-            <Button isLoading={isLoading}>Log in</Button>
+            <PersonalnfoForm />
+            <Button isLoading={isLoading} className="mx-auto w-max">
+              Sign up
+            </Button>
           </Form>
         </Card>
       </div>
@@ -62,4 +65,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

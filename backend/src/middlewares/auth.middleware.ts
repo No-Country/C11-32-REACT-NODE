@@ -22,7 +22,7 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
       const token = jwt.verify(bearerToken, CONFIG.JWT_SECRET);
       console.log("Token data: ", token);
       //? Fetch user valid token
-      const user = await Users.findByPk((token as Token)?.userId);
+      const user = await Users.findByPk((token as Token)?.id);
       if (!user) {
         res.status(404).json({ error: "User is not identified"});
       } 

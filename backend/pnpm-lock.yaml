@@ -57,6 +57,9 @@ devDependencies:
   '@types/node':
     specifier: '*'
     version: 20.1.5
+  '@types/stripe-v3':
+    specifier: ^3.1.28
+    version: 3.1.28
   '@types/validator':
     specifier: ^13.7.17
     version: 13.7.17
@@ -314,6 +317,10 @@ packages:
     dependencies:
       '@types/mime': 3.0.1
       '@types/node': 20.1.5
+    dev: true
+
+  /@types/stripe-v3@3.1.28:
+    resolution: {integrity: sha512-5poJyz1QFXpi1hE2bAWy7gFMdj5Fgofm94DNCaTK9V2LeWPdhCQIaP/6qUagZwgCcTURXzih1J7f3sjXH1cOsw==}
     dev: true
 
   /@types/validator@13.7.17:

@@ -3,6 +3,8 @@ import { Navigate, Route } from "react-router-dom";
 import { ROUTES } from ".";
 import { RoutesWithNotFound } from "@/components";
 import Specially from "@/pages/Clases/Specially";
+import Abreviations from "@/pages/Clases/Abreviations";
+
 const About = lazy(() => import("@/pages/About/About"));
 const Home = lazy(() => import("@/pages/Home/Home"));
 const RoadMap = lazy(() => import("@/pages/RoadMap/RoadMap"));
@@ -10,7 +12,8 @@ const ContainerBlog = lazy(() => import("@/pages/Blog/ContainerBlog"));
 
 const VideoCalling = lazy(() => import("@/pages/VideoCalling/VideoCalling"));
 
-const Login = lazy(() => import("@/pages/Login/Login"));
+const Login = lazy(() => import("@/pages/Auth/Login"));
+const Register = lazy(() => import("@/pages/Auth/Register"));
 const PricingPlans = lazy(() => import("@/pages/Suscriptions/PricingPlans"));
 const Checkout = lazy(() => import("@/pages/Suscriptions/Checkout"));
 
@@ -22,9 +25,11 @@ const MainRoutes = () => {
       <Route path={ROUTES.roadMap} element={<RoadMap />} />
       <Route path={ROUTES.blog} element={<ContainerBlog />} />
       <Route path={ROUTES.specially} element={<Specially />} />
+      <Route path={ROUTES.abbreviations} element={<Abreviations />} />
 
       <Route path={ROUTES.rooms} element={<VideoCalling />} />
       <Route path={ROUTES.auth.login} element={<Login />} />
+      <Route path={ROUTES.auth.register} element={<Register />} />
       <Route
         path={ROUTES.suscriptions.pricingPlans}
         element={<PricingPlans />}

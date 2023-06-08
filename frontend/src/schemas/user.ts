@@ -31,6 +31,7 @@ export const userSchema = z
   })
   .refine((value) => value.password === value.repeat_password, {
     message: "Passwords do not match",
+    path: ["repeat_password"],
   });
 
 export type User = z.infer<typeof userSchema>;

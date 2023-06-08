@@ -1,6 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import { sequelize } from "~/db/models";
+import { UserI } from "~/db/models/User.model";
 import UsersService, { UserAndProfilePayload } from "~/services/user.service";
+import Sequelize from "sequelize";
+
+const msg = {
+  addSuccess: "The account was created correctly",
+  duplicateEmail: "There is already an account with that email",
+};
 
 export function getUsers(request: Request, response: Response, next: NextFunction) {
   UsersService.findAndCount(request.query)
@@ -17,32 +24,19 @@ export function getUsers(request: Request, response: Response, next: NextFunctio
 }
 
 export async function addUser(request: Request, response: Response, next: NextFunction) {
-  const body: UserAndProfilePayload = request.body;
-  console.log("body", body);
+  const body: UserI = request.body;
   try {
-    console.log("try", body);
-    const user = await UsersService.createUser(body);
-    return response.status(201).json({ result: user });
+    const newUser = await UsersService.createUser(body);
+    return response.status(201).json({ message: msg.addSuccess,  newUser});
   } catch (error) {
     console.log(error);
-    return response.status(400).json({
-      messege: "missing fields",
-      fields: {
-        first_name: "string *",
-        last_name: "string *",
-        email: "example@gmail.com *",
-        username: "string *",
-        password: "string *",
-        age: "number *",
-        // gender: "string *",
-        is_kid_profile: "boolean *",
-        image_url: "url",
-        code_phone: "number",
-        phone: "number",
-        country_id: "integer",
-      },
-    });
-    // next(error);
+    if(error instanceof Sequelize.UniqueConstraintError){
+      return response.status(400).json({ message: "Email or username already exist" });
+    }
+    if(error instanceof Sequelize.ValidationError){
+      return response.status(400).json({ message: "missing fields" });
+    }
+    next(error);
   } finally {
     await sequelize.close();
   }

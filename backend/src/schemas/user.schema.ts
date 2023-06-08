@@ -11,5 +11,5 @@ export const UserSchema = z.object({
     .min(2, { message: "Last name must have at least 2 characters" }),
   email: z.string().nonempty("Email is required").email({ message: "Enter a valid email address" }),
   password: z.string().nonempty("Password is required").min(8, { message: "Password must have at least 8 characters" }),
-  age: z.string().nonempty("Age is required"),
+  age: z.number().min(1).max(2)
 });

@@ -1,82 +1,53 @@
-import { useState } from "react"
+import React from 'react';
 
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import Formulario from "../Formulario/Formulario";
-import MiOrg from "../MiOrg/MiOrg";
-import Meetings from "../Salas/Meetings";
+interface Person {
+  name: string;
+  role: string;
+  imageUrl: string;
+}
 
-const About = () => {
-  const [mostrarFormulario, actualizarMostrar] = useState(false);
-  const [salas, actualizarSalas] = useState([]);
-
-  const cambiarMostrar = () => {
-    actualizarMostrar(!mostrarFormulario);
-  };
-
-  // RegistrarSala
-  const registrarSala = (sala) => {
-    console.log('Nueva sala', sala);
-    actualizarSalas([...salas, sala]);
-  };
-
-  const topics = [
+const About: React.FC = () => {
+  const people: Person[] = [
     {
-      titulo: 'Technology in Our Daily Lives 📱💻',
-      colorPrimario: '#57C278',
-      colorSecundario: '#D9F7E9',
+      name: 'Leslie Alexander',
+      role: 'Co-Founder / CEO',
+      imageUrl:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
     {
-      titulo: 'Art and Creativity 🎨🖌️',
-      colorPrimario: '#82CFFA',
-      colorSecundario: '#E8F8FF',
+      name: 'John Doe',
+      role: 'CTO',
+      imageUrl: 'https://example.com/john-doe.jpg',
     },
-    {
-      titulo: 'Environmental Issues and Sustainability ♻️🌍',
-      colorPrimario: '#A6D157',
-      colorSecundario: '#F0F8E2',
-    },
-    {
-      titulo: 'Travel and Exploration ✈️🌴',
-      colorPrimario: '#E06B69',
-      colorSecundario: '#FDE7E8',
-    },
-    {
-      titulo: 'Cultural Diversity and Traditions 🌍🎎',
-      colorPrimario: '#DB6EBF',
-      colorSecundario: '#FAE9F5',
-    },
-    {
-      titulo: 'Education and Lifelong Learning 📚🎓',
-      colorPrimario: '#FFBA05',
-      colorSecundario: '#FFF5D9',
-    },
-    {
-      titulo: 'Current Events and News 📰🌐',
-      colorPrimario: '#FF8A29',
-      colorSecundario: '#FFEEDF',
-    },
+    // Add more people...
   ];
-  
+
   return (
-    <div>
-      <Header />
-      {mostrarFormulario && (
-        <Formulario
-          topics={topics.map((topic) => topic.titulo)}
-          registrarSala={registrarSala}
-        />
-      )}
-      <MiOrg cambiarMostrar={cambiarMostrar} />
-      {topics.map((topic, index) => (
-        <Meetings
-          datos={topic}
-          key={topic.titulo}
-          salas={salas.filter((sala) => sala.topico === topic.titulo)}
-        />
-      ))}
-      <Footer />
+    <div className="bg-white py-24 sm:py-32">
+      <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our Team</h2>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae ullamcorper
+            suspendisse.
+          </p>
+        </div>
+        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          {people.map((person) => (
+            <li key={person.name}>
+              <div className="flex items-center gap-x-6">
+                <img className="h-16 w-16 rounded-full" src={person.imageUrl} alt="" />
+                <div>
+                  <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
+                  <p className="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
+
 export default About;

@@ -26,6 +26,7 @@
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "*",
+    "@types/stripe-v3": "^3.1.28",
     "@types/validator": "^13.7.17",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",

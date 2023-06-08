@@ -3,11 +3,13 @@ export const ROUTES = {
   roadMap: "/roadmap",
   blog: "/blog",
   specially: "/Specially",
+  abbreviations: "/Abbreviations",
   rooms: "/rooms",
   auth: {
     login: "/auth/login",
     register: "/auth/register",
     logout: "/auth/logout",
+    profile: "/auth/profile",
   },
   suscriptions: {
     pricingPlans: "/pricing",

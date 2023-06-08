@@ -11,16 +11,11 @@ interface AuthContextProps {
   children?: ReactNode;
 }
 
-interface Auth {
-  user: User;
-  accessToken: string;
-}
-
-interface User {
-  id: string;
+export interface Auth {
+  token: string;
   name: string;
   last_name: string;
-  hasActiveSubscriptions: boolean;
+  hasSubscriptionActive: boolean;
 }
 
 const AuthContext = createContext<AuthContextProps | null>(null);
@@ -29,9 +24,9 @@ export const AuthProvider: FC<AuthContextProps> = ({ children }) => {
   const [auth, setAuth] = useLocalStorage<Auth | null>("persist", null);
 
   function isExpiredToken() {
-    if (!auth?.accessToken) return false;
+    if (!auth?.token) return false;
 
-    const { exp = 0 } = jwtDecode<JwtPayload>(auth.accessToken) ?? {};
+    const { exp = 0 } = jwtDecode<JwtPayload>(auth.token) ?? {};
 
     return Date.now() >= exp * 1000;
   }
@@ -42,19 +37,16 @@ export const AuthProvider: FC<AuthContextProps> = ({ children }) => {
   }
 
   useEffect(() => {
-    const token = window.localStorage.getItem("persist");
+    const auth = window.localStorage.getItem("persist");
 
-    if (token === null || token === "null") return;
+    if (auth === null || auth === "null") return;
 
-    const tokenParsed = JSON.parse(token) as Auth;
-    const accessTokenDecoded = jwtDecode<JwtPayload>(tokenParsed.accessToken);
+    const tokenParsed = JSON.parse(auth) as Auth;
+    const accessTokenDecoded = jwtDecode<JwtPayload>(tokenParsed.token);
 
     if (!accessTokenDecoded.exp) return;
 
-    setAuth({
-      user: accessTokenDecoded as User,
-      accessToken: tokenParsed.accessToken,
-    });
+    setAuth(tokenParsed);
 
     if (Date.now() >= accessTokenDecoded.exp * 1000) {
       window.localStorage.removeItem("persist");
@@ -64,12 +56,7 @@ export const AuthProvider: FC<AuthContextProps> = ({ children }) => {
 
   const setAuthToken = (response: Auth) => {
     setAuth(response);
-    localStorage.setItem(
-      "persist",
-      JSON.stringify({
-        accessToken: response.accessToken,
-      })
-    );
+    localStorage.setItem("persist", JSON.stringify(response));
   };
 
   return (

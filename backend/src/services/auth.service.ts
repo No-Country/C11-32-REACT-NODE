@@ -19,6 +19,21 @@ const checkUserCredencial = async (email: string, password: string): Promise<Use
       // },
       attributes: ["id", "first_name", "last_name", "email", "password"],
       include: [{ model: Profiles, attributes: ["username"], required: true, include: [{ model: Roles, attributes: ["description"] }] }],
+      // include: [{ model: Profiles, as: "profile", attributes: ["username"] }],
+      // include: [
+      //   {
+      //     model: Profiles,
+      //     as: "profile",
+      //     attributes : ["role_id"],
+      //     include: [
+      //       {
+      //         model: Roles,
+      //         attributes: ["description"]
+
+      //       }
+      //     ]
+      //   }
+      // ]
     });
     const jsonUser = user?.toJSON();
     console.log("USUARIO: ", jsonUser.profile[0]);
