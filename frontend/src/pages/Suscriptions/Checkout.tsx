@@ -60,7 +60,7 @@ const Checkout = () => {
 
   return (
     <div className="container mx-auto flex flex-col content-center gap-4 p-4 md:px-20">
-      <Form methods={methods} onSubmit={handleSubmit}>
+      <Form methods={methods} onSubmit={handleSubmit} className="w-full">
         <Stepper steps={checkoutFormSteps} activeStep={stepForm} />
 
         <Card className="mt-8">

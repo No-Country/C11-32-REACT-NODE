@@ -75,7 +75,6 @@ const Login = () => {
                     Sign in
                   </Button>
                   <Button
-                    isLoading={isLoading}
                     className="login__button-ghost " 
                   >
                     Sign Up
