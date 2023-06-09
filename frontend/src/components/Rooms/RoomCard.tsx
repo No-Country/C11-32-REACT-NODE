@@ -38,19 +38,21 @@ const RoomCard: React.FC<RoomCardProps> = ({ data }) => {
         <p className={`${isRoomFull ? "text-red-500" : "text-black"} text-sm`}>
           participants: {`${max_participants} / ${current_participants}`}
         </p>
-        {is_public ? (
-          <BadgeSuccess name="Public" className="block"/>
-        ) : (
-          <BadgeError name="Private" />
-        )}
-        <Link to={`${ROUTES.rooms.join}/${meet_id}`}>
-          <button
-            className="btn-iniciar mx-auto mt-4"
-            style={{ backgroundColor: primaryColor }}
-          >
-            Join now
-          </button>
-        </Link>
+        <div className="flex flex-col gap-2 justify-center items-center">
+          {is_public ? (
+            <BadgeSuccess name="Public" className="block"/>
+          ) : (
+            <BadgeError name="Private" />
+          )}
+          <Link to={`${ROUTES.rooms.join}/${meet_id}`}>
+            <button
+              className="btn-iniciar mx-auto mt-4"
+              style={{ backgroundColor: primaryColor }}
+            >
+              Join now
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
