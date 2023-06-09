@@ -22,7 +22,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ data }) => {
     current_participants,
   } = data;
 
-  const { primaryColor } = TOPIC_COLOR[topic];
+  const { primaryColor } = TOPIC_COLOR?.[topic] ?? "#57C278";
   const isRoomFull = current_participants === max_participants;
 
   return (
