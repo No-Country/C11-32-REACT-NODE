@@ -1,8 +1,8 @@
 import { Button, Card, Form, ScreenLoader, Stepper } from "@/components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckoutPaymentInfo, CheckoutPersonalnfo } from ".";
 import { checkoutFormSteps } from "@/constants/formSteps";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { addSubscription } from "@/services";
 import { FieldValues, useForm } from "react-hook-form";
@@ -13,13 +13,20 @@ import { useCheckout } from "@/hooks";
 import { Subscription, User } from "@/models";
 
 const Checkout = () => {
+  const navigate = useNavigate()
   const { createPayment, getCard } = useCheckout();
   const { id = "" } = useParams();
   const [stepForm, setStepForm] = useState(0);
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isLoading,isSuccess } = useMutation({
     mutationFn: (data: Subscription) => addSubscription(data),
   });
+
+  useEffect(() => {
+    if(!isSuccess) return 
+    navigate("/",{replace:true})
+  }, [isSuccess])
+  
 
   const methods = useForm<FieldValues>({
     resolver: zodResolver(userSchema),

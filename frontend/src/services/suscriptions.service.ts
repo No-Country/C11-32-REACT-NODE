@@ -2,7 +2,7 @@ import { Axios } from "@/apis";
 import { Subscription } from "@/models";
 
 export const URL_SUBSCRIPTION = {
-  default: "/api/v1/subscriptions",
+  default: "/api/v1/subscription",
 };
 
 export const addSubscription = async (data: Subscription) => {
