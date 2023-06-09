@@ -46,6 +46,7 @@ const Meeting = () => {
                 setStartMeeting(false);
                 setIsMeetingLeft(true);
               }}
+              participantData={{ meet_id: meetingId, user_id: auth?.id ?? "" }}
               setIsMeetingLeft={setIsMeetingLeft}
               micEnabled={micOn}
               webcamEnabled={webcamOn}

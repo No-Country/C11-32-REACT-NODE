@@ -3,6 +3,9 @@ import "./RoomCard.css";
 import { logo } from "@/assets";
 import { RoomI } from "@/models";
 import { TOPIC_COLOR } from "@/constants";
+import { ROUTES } from "@/routes";
+import { Link } from "react-router-dom";
+import { BadgeError, BadgeSuccess } from "..";
 interface RoomCardProps {
   data: RoomI;
 }
@@ -16,10 +19,11 @@ const RoomCard: React.FC<RoomCardProps> = ({ data }) => {
     is_public,
     max_participants,
     meet_id,
-    status,
+    current_participants,
   } = data;
 
-  const { primaryColor, secondaryColor } = TOPIC_COLOR[topic];
+  const { primaryColor } = TOPIC_COLOR[topic];
+  const isRoomFull = current_participants === max_participants;
 
   return (
     <div className="meeting mt-2">
@@ -31,12 +35,22 @@ const RoomCard: React.FC<RoomCardProps> = ({ data }) => {
         <h6>{level}</h6>
         <h5>{language}</h5>
 
-        <button
-          className="btn-iniciar mx-auto mt-4"
-          style={{ backgroundColor: primaryColor }}
-        >
-          Join now
-        </button>
+        <p className={`${isRoomFull ? "text-red-500" : "text-black"}`}>
+          participants: {`${max_participants} / ${current_participants}`}
+        </p>
+        {is_public ? (
+          <BadgeSuccess name="Public" />
+        ) : (
+          <BadgeError name="Private" />
+        )}
+        <Link to={`${ROUTES.rooms.join}/${meet_id}`}>
+          <button
+            className="btn-iniciar mx-auto mt-4"
+            style={{ backgroundColor: primaryColor }}
+          >
+            Join now
+          </button>
+        </Link>
       </div>
     </div>
   );

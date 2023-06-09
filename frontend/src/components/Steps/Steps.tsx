@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { horario, teachers, money, plataforma } from "@/assets";
 import "./Steps.css";
 
 const Steps = () => {
   const stepsData = [
     {
-      title: 'Improve Your English',
-      description: 'Our community has over 2000 expert teachers, all with previous teaching experience.',
+      title: "Improve Your English",
+      description:
+        "Our community has over 2000 expert teachers, all with previous teaching experience.",
       image: teachers,
     },
     {
-      title: 'Affordable',
-      description: 'With classes starting from 22.04 PEN, SpeakUp! offers distance language learning that fits any budget.',
+      title: "Affordable",
+      description:
+        "With classes starting from 22.04 PEN, SpeakUp! offers distance language learning that fits any budget.",
       image: money,
     },
     {
-      title: 'Flexible Schedule',
-      description: 'We offer the possibility to learn based on your schedule. Reserve your classes whenever you want to learn.',
+      title: "Flexible Schedule",
+      description:
+        "We offer the possibility to learn based on your schedule. Reserve your classes whenever you want to learn.",
       image: horario,
     },
     {
-      title: 'All-in-One Platform',
-      description: 'All your learning in one comprehensive platform that accompanies you anywhere.',
+      title: "All-in-One Platform",
+      description:
+        "All your learning in one comprehensive platform that accompanies you anywhere.",
       image: plataforma,
     },
   ];
@@ -29,11 +33,13 @@ const Steps = () => {
   const [isAnimationEnabled, setIsAnimationEnabled] = useState(true);
 
   const stepsContainerRef = React.useRef<HTMLElement>(null);
-  const stepCardImagesRef = React.useRef<HTMLCollectionOf<HTMLElement> | null>(null);
-  const stepCardBackgroundsRef = React.useRef<HTMLCollectionOf<HTMLElement> | null>(null);
+  const stepCardImagesRef = React.useRef<HTMLImageElement | null>(null);
+  const stepCardBackgroundsRef =
+    React.useRef<HTMLCollectionOf<HTMLElement> | null>(null);
   const range = 40;
 
-  const calcValue = (a: number, b: number): string => ((a / b) * range - range / 2).toFixed(1);
+  const calcValue = (a: number, b: number): string =>
+    ((a / b) * range - range / 2).toFixed(1);
 
   let timeout: number;
 
@@ -46,17 +52,27 @@ const Steps = () => {
       window.cancelAnimationFrame(timeout);
     }
     timeout = window.requestAnimationFrame(() => {
-      const yValue = calcValue(y, window.innerHeight);
-      const xValue = calcValue(x, window.innerWidth);
-      stepsContainerRef.current!.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`;
+      const yValue = calcValue(y as number, window.innerHeight as number);
+      const xValue = calcValue(x as number, window.innerWidth as number);
+      if (stepsContainerRef.current) {
+        stepsContainerRef.current.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`;
+      }
 
-      Array.prototype.forEach.call(stepCardImagesRef.current, (item: HTMLElement) => {
-        item.style.transform = `translateX(${-xValue}px) translateY(${yValue}px)`;
-      });
+      Array.prototype.forEach.call(
+        stepCardImagesRef.current,
+        (item: HTMLElement) => {
+          item.style.transform = `translateX(${-xValue}px) translateY(${yValue}px)`;
+        }
+      );
 
-      Array.prototype.forEach.call(stepCardBackgroundsRef.current, (item: HTMLElement) => {
-        item.style.backgroundPosition = `${xValue * 0.45}px ${-yValue * 0.45}px`;
-      });
+      Array.prototype.forEach.call(
+        stepCardBackgroundsRef.current,
+        (item: HTMLElement) => {
+          item.style.backgroundPosition = `${Number(xValue) * 0.45}px ${
+            -yValue * 0.45
+          }px`;
+        }
+      );
     });
   };
 
@@ -74,7 +90,8 @@ const Steps = () => {
     initializeMouseMove();
 
     // Restaurar el estado de la animación desde el almacenamiento local
-    const isAnimationEnabledFromStorage = localStorage.getItem('isAnimationEnabled') === 'true';
+    const isAnimationEnabledFromStorage =
+      localStorage.getItem("isAnimationEnabled") === "true";
     setIsAnimationEnabled(isAnimationEnabledFromStorage);
 
     return () => {
@@ -84,14 +101,11 @@ const Steps = () => {
 
   useEffect(() => {
     // Guardar el estado de la animación en el almacenamiento local
-    localStorage.setItem('isAnimationEnabled', String(isAnimationEnabled));
+    localStorage.setItem("isAnimationEnabled", String(isAnimationEnabled));
   }, [isAnimationEnabled]);
 
   return (
-    <main
-      className="steps-container"
-      ref={stepsContainerRef}
-    >
+    <main className="steps-container" ref={stepsContainerRef}>
       <h1>Benefits</h1>
       {stepsData.map((step, index) => (
         <div className={`step-card step-card__${index + 1}`} key={index}>
@@ -100,7 +114,7 @@ const Steps = () => {
             className="step-card__img"
             src={step.image}
             alt={step.title}
-            ref={el => {
+            ref={(el) => {
               if (el) {
                 stepCardImagesRef.current = el;
               }

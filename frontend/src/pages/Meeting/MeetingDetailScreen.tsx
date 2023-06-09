@@ -11,8 +11,8 @@ import { SettingBox } from "@/components";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { useAuth } from "@/hooks";
-import { JoinCall } from "@/models";
-import { roomsJoin } from "@/services";
+import { dataVideoCall } from "@/models";
+import { joinRoom } from "@/services";
 
 interface Device {
   deviceId: string;
@@ -53,7 +53,7 @@ const MeetingDetailScreen = ({
   const { auth } = useAuth() ?? {};
 
   const { mutate } = useMutation({
-    mutationFn: (data: JoinCall) => roomsJoin(data, auth?.token),
+    mutationFn: (data: dataVideoCall) => joinRoom(data, auth?.token),
   });
 
   useEffect(() => {
