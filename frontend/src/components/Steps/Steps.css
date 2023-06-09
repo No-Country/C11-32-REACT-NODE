@@ -1,7 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap";
 * {
-  padding: 0;
-  margin: 0;
+ 
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
@@ -15,7 +14,7 @@ body {
   font-family: "Open Sans", sans;
   justify-content: center;
   text-align: center;
-  margin: 0 20px;
+ 
 }
 .steps-container {
   background: rgb(246, 245, 235);
