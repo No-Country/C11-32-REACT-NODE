@@ -48,9 +48,9 @@ const CreateRoom = () => {
   };
 
   return (
-    <main className="container mx-auto">
+    <main className="flex justify-center flex-col items-center mx-auto">
       <h1 className="mb-4 text-center font-semibold">Create a room</h1>
-      <Form methods={methods} onSubmit={handleSubmit}>
+      <Form methods={methods} onSubmit={handleSubmit} className="w-[35rem]">
         <RoomForm />
         <Button isLoading={isLoading} className="mx-auto mt-4 w-max">
           Create room
