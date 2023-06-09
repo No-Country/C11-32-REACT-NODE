@@ -8,12 +8,13 @@ const Rooms = () => {
   const { isLoading, data, isSuccess } = useQuery({
     queryKey: ["listRooms"],
     queryFn: roomsList,
+    refetchInterval:3000
   });
 
   if (isLoading) return <ScreenLoader />;
 
   return (
-    <main className="container mx-auto pt-8">
+    <main className="px-8 mx-auto pt-8">
       <Link to={ROUTES.rooms.create}>
         <Button className="mb-8 w-max">Create room</Button>
       </Link>

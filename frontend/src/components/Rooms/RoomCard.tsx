@@ -31,15 +31,15 @@ const RoomCard: React.FC<RoomCardProps> = ({ data }) => {
         <img className="mx-auto" src={logo} alt="logo" />
       </div>
       <div className="info">
-        <h5>{title}</h5>
-        <h6>{level}</h6>
-        <h5>{language}</h5>
+        <h5 className="font-semibold">{title}</h5>
+        <h6>{language}</h6>
+        <h6 className="pb-4">{level}</h6>
 
-        <p className={`${isRoomFull ? "text-red-500" : "text-black"}`}>
+        <p className={`${isRoomFull ? "text-red-500" : "text-black"} text-sm`}>
           participants: {`${max_participants} / ${current_participants}`}
         </p>
         {is_public ? (
-          <BadgeSuccess name="Public" />
+          <BadgeSuccess name="Public" className="block"/>
         ) : (
           <BadgeError name="Private" />
         )}
