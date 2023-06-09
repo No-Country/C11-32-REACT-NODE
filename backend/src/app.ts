@@ -5,8 +5,8 @@ import { CONFIG } from "./config/config";
 import routerApi from "./routes";
 import DBInit from "./db";
 import { errorHandler } from "./middlewares";
+// const routerApi = require("./routes/index.js");
 const { PORT } = CONFIG;
-
 DBInit()
   .then(() => {
     console.log("Database conected");

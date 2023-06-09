@@ -8,4 +8,3 @@ export default class CustomError extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
-

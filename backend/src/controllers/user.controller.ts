@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import { sequelize } from "~/db/models";
 import { UserI } from "~/db/models/User.model";
 import UsersService from "~/services/user.service";
 import Sequelize from "sequelize";
+import { sequelize } from "~/db";
 
 const msg = {
   addSuccess: "The account was created correctly",
@@ -17,9 +17,6 @@ export function getUsers(request: Request, response: Response, next: NextFunctio
     .catch((error) => {
       console.log(error);
       next(error);
-    })
-    .finally(async () => {
-      await sequelize.close();
     });
 }
 

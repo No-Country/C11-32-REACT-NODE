@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { getPlans, getPlansById } from "~/controllers/plans.controller";
 
-const routeSuscriptions = Router();
+const routePlan = Router();
 
-routeSuscriptions.get("/", getPlans);
-routeSuscriptions.get("/:id", getPlansById);
+routePlan.get("/", getPlans);
+routePlan.get("/:id", getPlansById);
 
-export default routeSuscriptions;
+export default routePlan;

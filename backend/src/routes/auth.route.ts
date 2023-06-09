@@ -4,9 +4,8 @@ import { addUser } from "../controllers/user.controller";
 import { validateScheme } from "~/middlewares";
 import { UserSchema } from "~/schemas";
 
-const routeUser = Router();
+const routeAuth = Router();
 
-routeUser.post("/login", postLogin)
-  .post("/signup",  addUser);
+routeAuth.post("/login", postLogin).post("/signup", addUser);
 
-export default routeUser;
+export default routeAuth;

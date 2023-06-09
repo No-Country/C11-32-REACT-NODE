@@ -2,11 +2,11 @@ import { Router } from "express";
 import { createRoom, getAllRooms, joinRoom, leaveRoom } from "~/controllers/rooms.controller";
 import validateToken from "~/middlewares/auth.middleware";
 
-const routeUser = Router();
+const routeRoom = Router();
 
-routeUser.get("/", getAllRooms);
-routeUser.post("/", validateToken, createRoom);
-routeUser.post("/join-room", validateToken, joinRoom);
-routeUser.delete("/leave-room", validateToken, leaveRoom);
+routeRoom.get("/", getAllRooms);
+routeRoom.post("/", validateToken, createRoom);
+routeRoom.post("/join-room", validateToken, joinRoom);
+routeRoom.delete("/leave-room", validateToken, leaveRoom);
 
-export default routeUser;
+export default routeRoom;

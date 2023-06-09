@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { sequelize } from "~/db/models";
+import { sequelize } from "~/db";
 import { RoomI } from "~/db/models/Room.model";
 import ParticipantsService from "~/services/participant.service";
 import RoomsService from "~/services/room.service";
