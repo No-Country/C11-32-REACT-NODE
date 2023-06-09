@@ -7,8 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css"
+import { ROUTES } from "@/routes";
 const Login = () => {
   const { setAuthToken } = useAuth() ?? {};
 
@@ -74,13 +75,8 @@ const Login = () => {
                   >
                     Sign in
                   </Button>
-                  <Button
-                    className="login__button-ghost " 
-                  >
-                    Sign Up
-                  </Button>
              </div>
-               
+               <p>don't have an account, <Link to={ROUTES.auth.register} className="text-[rgb(42,101,231)]">register</Link></p>
           </Form>
 
        
