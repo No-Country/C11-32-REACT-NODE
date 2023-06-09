@@ -39,7 +39,7 @@ const Login = () => {
   }, [isSuccess, data]);
 
   return (
-    <main className="container ">
+<main className="container" style={{ marginTop: "50px" }}>
       <div className="login__content">
       <img src="https://i.ibb.co/ChRBkx3/fd23a522d40a7049200c9b6383fa51d2.jpg" alt="login image" className="login__img"/>
 
@@ -47,7 +47,6 @@ const Login = () => {
           <Form methods={methods} onSubmit={handleSubmit} >
              <div>
              <h1 className="login__title"> <span>Welcome</span> Back </h1>
-             <p className="login__description">Welcome! Please login to continue. </p>
              </div>
             <div>
                   <div className="login__inputs">
@@ -55,14 +54,20 @@ const Login = () => {
                     name="email"
                     label="Email address"
                     className="login__input"
+                    placeholder="Enter your email address"
                   />
                   <Input
                     name="password"
                     label="Password"
                     type="password"
-                    className="login__input "                  />
+                    className="login__input "  
+                    placeholder="Enter your password"                />
+
+                    
                   </div>
-                 <div className="login__buttons">
+                 
+            </div>
+            <div className="login__buttons">
                  <Button
                     isLoading={isLoading}
                    
@@ -75,9 +80,8 @@ const Login = () => {
                   >
                     Sign Up
                   </Button>
-                 </div>
-                 <a href="#" className="login__forgot">Forgot Password?</a>
-            </div>
+             </div>
+               
           </Form>
 
        

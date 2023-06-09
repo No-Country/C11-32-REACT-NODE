@@ -12,7 +12,7 @@ const Button: FC<Props> = ({ children, className, isLoading, ...rest }) => {
   return (
     <button
       className={
-        "login__button login__button-ghost " +
+        "login__button  " +
         className
       }
       {...rest}

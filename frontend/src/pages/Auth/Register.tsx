@@ -42,13 +42,11 @@ const Register = () => {
   }, [isSuccess, data]);
 
   return (
-    <main className="container ">
+<main className="container" style={{ marginTop: "50px" }}>
             <div className="login__content">
             <img src="https://i.ibb.co/ChRBkx3/fd23a522d40a7049200c9b6383fa51d2.jpg" alt="login image" className="login__img"/>
 
-      <h1 className="my-8 text-center text-4xl  font-semibold">
-        
-      </h1>
+     
         
           <Form methods={methods} onSubmit={handleSubmit}>
           <div>
